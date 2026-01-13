@@ -1158,5 +1158,29 @@ a:hover {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+    
+}
+
+/* Featured Image in Blog Post */
+.featured-image {
+    margin: 30px 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius);
+}
+
+/* Blog Card Image Enhancement */
+.blog-card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
