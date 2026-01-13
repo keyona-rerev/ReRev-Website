@@ -1,0 +1,33 @@
+<!-- navigation.html -->
+<nav class="navbar">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <i class="fas fa-flask"></i> ReRev Labs
+        </a>
+        <div class="nav-links">
+            <a href="index.html" data-page="index.html">Home</a>
+            <a href="services.html" data-page="services.html">Services</a>
+            <a href="about.html" data-page="about.html">About</a>
+            <a href="blog.html" data-page="blog.html">Blog</a>
+            <a href="contact.html" data-page="contact.html">Contact</a>
+            <a href="contact.html#consult" class="cta-btn">Book a Consult</a>
+        </div>
+        <button class="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+<script>
+    // Add 'active' class to current page link
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-links a[data-page]');
+        
+        navLinks.forEach(link => {
+            if (link.getAttribute('data-page') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ReRev Labs</title>
+
+      <!-- Favicon links go here -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%230cb8e2%22>🧪</text></svg>">
+</head>
+<body>
+
+
+    <!-- Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Let's Work Together</h1>
+            <p class="lead">Ready to transform your startup's operations? Get in touch for a free consultation. We'll respond within 1 business day.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Schedule a Free Consult</h2>
+                    <p class="form-subtitle">Submit your information and we'll get back to you within 1 business day.</p>
+                    
+                    <form class="contact-form" action="submit.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest">What are you interested in? *</label>
+                            <select id="interest" name="interest" required>
+                                <option value="">Select an option</option>
+                                <option value="ai-professional">AI for Business Professional Development</option>
+                                <option value="ops-automation">Ops & Automation Services for my Startup</option>
+                                <option value="fractional-coo">Fractional Chief of Staff</option>
+                                <option value="customer-discovery">Custom Customer Discovery</option>
+                                <option value="founder-coaching">1:1 Founder Coaching</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message & Notes</label>
+                            <textarea id="message" name="message" rows="5"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        
+                        <p class="privacy-note">
+                            <i class="fas fa-shield-alt"></i> We respect your privacy. We'll never share your information with third parties.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="info-section">
+                        <h3><i class="fas fa-envelope"></i> Direct Contact</h3>
+                        <p><strong>Email:</strong> keyona@rerev.io</p>
+                        <p><strong>Location:</strong> Birmingham, AL</p>
+                        <p><strong>Response Time:</strong> Within 1 business day</p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-list-check"></i> What to Expect</h3>
+                        <ul>
+                            <li><strong>Free Consultation:</strong> 30-minute strategy call</li>
+                            <li><strong>Custom Proposal:</strong> Tailored solution based on your challenges</li>
+                            <li><strong>Clear Timeline:</strong> Transparent process and delivery expectations</li>
+                            <li><strong>Ongoing Support:</strong> Implementation and optimization support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3><i class="fas fa-users"></i> Who We Work With</h3>
+                        <p>We specialize in early-stage startups ($1M-$20M revenue) that are:</p>
+                        <ul>
+                            <li>Ready to scale operations intelligently</li>
+                            <li>Looking to validate product-market fit</li>
+                            <li>Need fractional leadership support</li>
+                            <li>Want to upskill their team in AI & automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="load-components.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
