@@ -1184,3 +1184,51 @@ a:hover {
     position: relative;
 }
 
+/* ============================================
+   16:9 ASPECT RATIO FOR BLOG IMAGES
+   ============================================ */
+
+/* For featured images in blog posts */
+.featured-image-16-9 {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16 = 0.5625 * 100) */
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+}
+
+.featured-image-16-9 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* For blog card images in listings */
+.blog-card-image-16-9 {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.blog-card-image-16-9 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-card-image-16-9 img {
+    transform: scale(1.05);
+}
+
