@@ -10,6 +10,22 @@
 </head>
 <body>
 
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-flask"></i> ReRev Labs
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html#consult" class="cta-btn">Book a Consult</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Blog Header -->
     <section class="page-header">
@@ -19,52 +35,103 @@
         </div>
     </section>
 
-    <!-- Coming Soon Message -->
+    <!-- Blog Posts Grid -->
     <section class="section">
         <div class="container">
-            <div class="coming-soon">
-                <div class="coming-soon-icon">
-                    <i class="fas fa-pen-nib"></i>
-                </div>
-                <h2>Content Coming Soon</h2>
-                <p>I'm currently preparing insightful articles on AI implementation, operational excellence, and founder development. Check back soon for practical advice you can apply immediately to your startup.</p>
-                <div class="topics-preview">
-                    <h3>Topics I'll Cover:</h3>
-                    <div class="topics-grid">
-                        <div class="topic-preview">
-                            <i class="fas fa-robot"></i>
-                            <h4>AI & Automation</h4>
-                            <p>Practical AI implementation without technical debt</p>
-                        </div>
-                        <div class="topic-preview">
-                            <i class="fas fa-cogs"></i>
-                            <h4>Operational Excellence</h4>
-                            <p>Building scalable systems for early-stage startups</p>
-                        </div>
-                        <div class="topic-preview">
-                            <i class="fas fa-user-tie"></i>
-                            <h4>Founder Development</h4>
-                            <p>From pitch decks to sustainable revenue</p>
-                        </div>
-                        <div class="topic-preview">
-                            <i class="fas fa-globe-americas"></i>
-                            <h4>Cross-Cultural Innovation</h4>
-                            <p>Lessons from Silicon Valley to emerging markets</p>
+            <div class="blog-grid">
+                <!-- Blog Post 1: The One-Pager That Gets Things Done -->
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background-image: linear-gradient(135deg, #051b2f 0%, #0cb8e2 100%);">
+                        <a href="blog/one-pager-gets-things-done.html">
+                            <div class="blog-card-category">Productivity & AI</div>
+                        </a>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">
+                            <a href="blog/one-pager-gets-things-done.html">The One-Pager That Gets Things Done</a>
+                        </h3>
+                        <p class="blog-card-excerpt">How to use AI, HTML, and CSS to turn your ideas into action. The non-negotiable skill every professional needs in the AI era.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date"><i class="far fa-calendar"></i> Oct 13, 2025</span>
+                            <span class="blog-card-read-time"><i class="far fa-clock"></i> 6 min read</span>
                         </div>
                     </div>
-                </div>
-                <div class="subscribe-cta">
-                    <p><strong>Want to be notified when new articles are published?</strong></p>
-                    <a href="contact.html" class="btn-service">
-                        <i class="fas fa-envelope"></i> Get In Touch
-                    </a>
+                </article>
+
+                <!-- More blog posts can be added here -->
+                <!-- Example placeholder for future posts -->
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #051b2f 0%, #dbc7a3 100%);">
+                        <a href="#">
+                            <div class="blog-card-category">Coming Soon</div>
+                        </a>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">
+                            <a href="#">AI Implementation Without Technical Debt</a>
+                        </h3>
+                        <p class="blog-card-excerpt">How to integrate AI tools into your startup workflow without creating maintenance nightmares or vendor lock-in.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date"><i class="far fa-calendar"></i> Coming Soon</span>
+                            <span class="blog-card-read-time"><i class="far fa-clock"></i> 8 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #051b2f 0%, #a1f0f3 100%);">
+                        <a href="#">
+                            <div class="blog-card-category">Coming Soon</div>
+                        </a>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3 class="blog-card-title">
+                            <a href="#">From Idea to MVP in 30 Days</a>
+                        </h3>
+                        <p class="blog-card-excerpt">A tactical guide to validating startup ideas quickly using no-code tools and lean methodology principles.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-card-date"><i class="far fa-calendar"></i> Coming Soon</span>
+                            <span class="blog-card-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Topics Preview (Optional - can keep or remove) -->
+    <section class="section bg-dark">
+        <div class="container">
+            <div class="topics-preview">
+                <h3>More Topics Coming Soon</h3>
+                <div class="topics-grid">
+                    <div class="topic-preview">
+                        <i class="fas fa-robot"></i>
+                        <h4>AI & Automation</h4>
+                        <p>Practical AI implementation without technical debt</p>
+                    </div>
+                    <div class="topic-preview">
+                        <i class="fas fa-cogs"></i>
+                        <h4>Operational Excellence</h4>
+                        <p>Building scalable systems for early-stage startups</p>
+                    </div>
+                    <div class="topic-preview">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Founder Development</h4>
+                        <p>From pitch decks to sustainable revenue</p>
+                    </div>
+                    <div class="topic-preview">
+                        <i class="fas fa-globe-americas"></i>
+                        <h4>Cross-Cultural Innovation</h4>
+                        <p>Lessons from Silicon Valley to emerging markets</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Newsletter Signup -->
-    <section class="section bg-dark">
+    <section class="section">
         <div class="container">
             <div class="newsletter">
                 <h2>Get Startup Insights Delivered</h2>
@@ -82,7 +149,30 @@
         </div>
     </section>
 
-   
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-flask"></i> ReRev Labs
+                </div>
+                <div class="footer-info">
+                    <p><i class="fas fa-envelope"></i> keyona@rerev.io</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Birmingham, AL</p>
+                </div>
+                <div class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ReRev Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="load-components.js"></script>
     <script src="script.js"></script>
