@@ -1223,9 +1223,69 @@ a:hover {
     }
 }
 
+/* ============================================
+   PARTICLE ANIMATION FOR HERO SECTIONS
+   ============================================ */
+
+.hero-particles {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-particles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(12, 184, 226, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(161, 240, 243, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(12, 184, 226, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 60% 30%, rgba(219, 199, 163, 0.08) 0%, transparent 50%);
+    background-size: 500px 500px;
+    animation: particles 25s infinite linear;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+@keyframes particles {
+    0% { 
+        background-position: 
+            0px 0px, 
+            100px 100px, 
+            200px 200px, 
+            300px 300px;
+    }
+    100% { 
+        background-position: 
+            500px 500px, 
+            600px 400px, 
+            300px 600px, 
+            700px 300px;
+    }
+}
+
 /* Ensure content stays above particles */
 .hero-particles .container,
 .page-header.hero-particles .container {
     position: relative;
     z-index: 2;
+}
+
+/* ============================================
+   SERVICES PAGE SPECIFIC BACKGROUND
+   ============================================ */
+
+/* Services page background with particles */
+.services .page-header.hero-particles,
+.page-header.hero-particles {
+    background: 
+        linear-gradient(135deg, rgba(5, 27, 47, 0.85), rgba(5, 27, 47, 0.95)),
+        url('../Background-IMGS/services-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
