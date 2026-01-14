@@ -1,173 +1,244 @@
-<style>
-    .article-wrap { color: #ffffff; line-height: 1.7; font-size: 1.1rem; }
-    .article-wrap h1, .article-wrap h2, .article-wrap h3 { color: #ffffff; margin-top: 1.5em; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The One-Pager That Gets Things Done: AI + HTML/CSS Workflow - ReRev Labs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%230cb8e2%22>🧪</text></svg>">
     
-    .article-content ul, .article-content ol { padding-left: 30px; margin-bottom: 25px; }
-    .article-content li { margin-bottom: 12px; }
+    <style>
+        /* Typography & Accessibility */
+        body { background-color: #0a192f; color: #ffffff; } /* Dark Blue Background */
+        .blog-post-content { color: #ffffff; }
+        .post-title { color: #ffffff; margin-bottom: 10px; }
+        .post-meta { color: #0cb8e2; margin-bottom: 20px; }
+        
+        /* Bullet point indentation fix */
+        .content ul, .content ol {
+            padding-left: 30px;
+            margin-bottom: 25px;
+        }
+        .content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
 
-    /* The Insight Card Component */
-    .insight-card {
-        display: flex;
-        align-items: flex-start;
-        gap: 15px;
-        margin: 35px 0;
-        padding: 25px;
-        border-radius: 12px;
-        border-left: 6px solid;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-    .insight-card p, .insight-card strong { color: #1a1a1a !important; margin: 0 !important; }
-    .insight-card i { font-size: 22px; margin-top: 3px; }
+        /* Standardized Insight Boxes (Cards) */
+        .insight-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 35px 0;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Text inside boxes MUST be dark for accessibility */
+        .insight-box p, .insight-box strong {
+            color: #1a1a1a !important; 
+            margin: 0 !important;
+            line-height: 1.5;
+        }
 
-    /* Brand Themes */
-    .theme-blue { background-color: #e0f7fa; border-color: #0cb8e2; }
-    .theme-blue i { color: #0cb8e2; }
-    .theme-purple { background-color: #f3e5f5; border-color: #9c27b0; }
-    .theme-purple i { color: #9c27b0; }
-    .theme-pink { background-color: #fce4ec; border-color: #e91e63; }
-    .theme-pink i { color: #e91e63; }
+        .insight-box i {
+            font-size: 22px;
+            margin-top: 3px;
+        }
 
-    .caveman-summary {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(12, 184, 226, 0.3);
-        padding: 25px;
-        border-radius: 12px;
-        margin: 25px 0;
-    }
+        /* Color Variations based on Brand Palette */
+        .box-blue { background-color: #e0f7fa; border-color: #0cb8e2; }
+        .box-blue i { color: #0cb8e2; }
 
-    .workshop-promo {
-        background: linear-gradient(135deg, #0cb8e2, #9c27b0);
-        padding: 35px;
-        border-radius: 12px;
-        text-align: center;
-        margin: 40px 0;
-    }
-    .workshop-promo a {
-        display: inline-block;
-        background: #fff;
-        color: #0a192f;
-        padding: 12px 25px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 15px;
-    }
-</style>
+        .box-purple { background-color: #f3e5f5; border-color: #9c27b0; }
+        .box-purple i { color: #9c27b0; }
 
-<div class="article-wrap">
+        .box-pink { background-color: #fce4ec; border-color: #e91e63; }
+        .box-pink i { color: #e91e63; }
+
+        /* TLDR Caveman Section */
+        .caveman-block {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(12, 184, 226, 0.3);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .cta-workshop {
+            background: linear-gradient(135deg, #0cb8e2, #9c27b0);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .btn-workshop {
+            display: inline-block;
+            background: #ffffff;
+            color: #0a192f;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo"><i class="fas fa-flask"></i> ReRev Labs</a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../services.html">Services</a>
+                <a href="../blog.html" class="active">Blog</a>
+                <a href="../contact.html" class="cta-btn">Book a Consult</a>
+            </div>
+        </div>
+    </nav>
+
     <article class="section">
         <div class="container">
             <div class="breadcrumb">
-                <a href="../blog.html" style="color: #0cb8e2; text-decoration: none;">
-                    <i class="fas fa-arrow-left"></i> Back to Blog
-                </a>
+                <a href="../blog.html" style="color: #0cb8e2;"><i class="fas fa-arrow-left"></i> Back to Blog</a>
             </div>
             
-            <header style="margin-bottom: 30px;">
-                <h1 style="font-size: 2.5rem; margin-bottom: 10px;">The One-Pager That Gets Things Done</h1>
-                <div style="color: #0cb8e2;">Oct 13, 2025 | By Keyona Meeks</div>
-            </header>
-
-            <div class="featured-image" style="margin-bottom: 40px;">
-                <img src="../Assets!/The-One-Pager-That-Gets-Things-Done-Blog-Post.png" alt="One-Pager Workflow" style="width:100%; border-radius:12px;">
-            </div>
-
-            <div class="article-content">
-                <p class="lead" style="font-size: 1.3rem; color: #0cb8e2;">How to use AI, HTML, and CSS to turn your ideas into action. The non-negotiable skill every professional needs in the AI era.</p>
-
-                <h2>TLDR for the Busy Caveman</h2>
-                <div class="caveman-summary">
-                    <p>You have idea. Boss no give resources. Problem not words. Problem picture. Picture make boss brain work less. Less work mean yes. Yes good!</p>
-                    <p>Picture come from copy. Copy must good first. No good copy, no good picture. Ask AI help copy. Make copy tight. Make copy persuasive.</p>
-                    <p>AI turn copy into code. HTML and CSS make pretty. You no need know code. You just tell AI what want. AI give code. You paste in CodePen. Done.</p>
-                    <p>CodePen free. Browser work. No install. No pay. Picture now live. You send link. Boss see. Boss understand. Boss say yes. Yes good!!</p>
-                    <p>Copy take time. Picture take fast. Picture take 15 minute from start to finish. That momentum. Momentum move career forward.</p>
-                    <p>You not just learn skill. You learn responsibility. You come back tell us what you build. We learn from you. Community grow. That how this work.</p>
+            <div class="blog-post-content">
+                <h1 class="post-title">The One-Pager That Gets Things Done</h1>
+                <div class="post-meta">
+                    <span>Oct 13, 2025</span> | <span>By Keyona Meeks</span>
                 </div>
 
-                <div class="insight-card theme-blue">
-                    <i class="fas fa-quote-left"></i>
-                    <p><strong>"Greatness is in the agency of others"</strong> - Scott Galloway</p>
+                <div class="featured-image">
+                    <img src="../Assets!/The-One-Pager-That-Gets-Things-Done-Blog-Post.png" alt="The One-Pager That Gets Things Done">
                 </div>
 
-                <h2>Building Persuasive Materials with AI</h2>
-                <h3>The Philosophy</h3>
-                <p>Your success completely lies in the agency of others. That’s not me being dark, it’s just reality. You have an idea, but what you don’t have is allocated resources and buy-in.</p>
-                <p>At ReRev Labs, we believe sales and marketing are not job roles. They’re skills every working professional needs. The new age of AI has only made that more clear.</p>
-                <p>A big part of selling is succinctly, quickly, and effectively communicating your ideas. The difference between “that sounds interesting” and “let’s move forward” often comes down to someone’s ability to understand what you’re trying to communicate. Not just understand it, but <strong>visualize it</strong> in a way that makes it easy to act on.</p>
-                <p>When you ask someone to evaluate an idea verbally or through text, they have to hold it all in their head. They have to imagine it. They have to translate your words into meaning.</p>
+                <div class="content">
+                    <p class="lead" style="font-size: 1.2em; color: #0cb8e2;">How to use AI, HTML, and CSS to turn your ideas into action. The non-negotiable skill every professional needs in the AI era.</p>
 
-                <div class="insight-card theme-blue">
-                    <i class="fas fa-lightbulb"></i>
-                    <p>When you show someone a visual, a clean professional one-pager or interactive pitch, it becomes real. That idea goes from intangible to concrete. It’s something they can show their colleagues. It’s something they can act on.</p>
+                    <h2>TLDR for the Busy Caveman</h2>
+                    <div class="caveman-block">
+                        <p>You have idea. Boss no give resources. Problem not words. Problem picture. Picture make boss brain work less. Less work mean yes. Yes good!</p>
+                        <p>Picture come from copy. Copy must good first. No good copy, no good picture. Ask AI help copy. Make copy tight. Make copy persuasive.</p>
+                        <p>AI turn copy into code. HTML and CSS make pretty. You no need know code. You just tell AI what want. AI give code. You paste in CodePen. Done.</p>
+                        <p>CodePen free. Browser work. No install. No pay. Picture now live. You send link. Boss see. Boss understand. Boss say yes. Yes good!!</p>
+                        <p>Copy take time. Picture take fast. Picture take 15 minute from start to finish. That momentum. Momentum move career forward.</p>
+                    </div>
+
+                    <div class="insight-box box-blue">
+                        <i class="fas fa-quote-left"></i>
+                        <p><strong>"Greatness is in the agency of others"</strong> - Scott Galloway</p>
+                    </div>
+
+                    <h2>Building Persuasive Materials with AI</h2>
+                    <h3>The Philosophy</h3>
+                    <p>Your success completely lies in the agency of others. That’s not me being dark, it’s just reality. You have an idea, but what you don’t have is allocated resources and buy-in.</p>
+                    <p>At ReRev Labs, we believe sales and marketing are not job roles. They’re skills every working professional needs. The new age of AI has only made that more clear.</p>
+                    <p>A big part of selling is succinctly, quickly, and effectively communicating your ideas. The difference between “that sounds interesting” and “let’s move forward” often comes down to someone’s ability to understand what you’re trying to communicate. Not just understand it, but <strong>visualize it</strong> in a way that makes it easy to act on.</p>
+
+                    <div class="insight-box box-blue">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>When you show someone a visual, a clean professional one-pager or interactive pitch, it becomes real. That idea goes from intangible to concrete. It’s something they can show their colleagues. It’s something they can act on.</p>
+                    </div>
+
+                    <h2>The Skill: Using AI to Generate HTML and CSS</h2>
+                    <p>Traditionally, creating polished custom sales materials meant either hiring a designer or spending hours in design tools like Canva. But now, with AI and some basic HTML and CSS knowledge, you can create professional branded one-pagers in minutes.</p>
+
+                    <h3>Step 1: Establish Your Copy</h3>
+                    <p>Start with the most important part: the content. Have an iterative conversation with your LLM of choice (Claude, ChatGPT, Gemini). Work through questions like:</p>
+                    <ul>
+                        <li>What problem does this solve?</li>
+                        <li>Who’s the ideal person to hear this?</li>
+                        <li>What action do I want them to take?</li>
+                        <li>What do they care about?</li>
+                        <li>What's the end benefit?</li>
+                    </ul>
+
+                    <div class="insight-box box-blue">
+                        <i class="fas fa-microphone-alt"></i>
+                        <p><strong>Pro-tip:</strong> Use <strong>SpeechNotes</strong> (or your preferred voice-to-text tool) to freely converse your thoughts instead of typing. Not only is this faster, it’s more effective.</p>
+                    </div>
+
+                    <h3>Step 2: Generate the HTML and CSS</h3>
+                    <p>Once your copy is locked in, ask the AI to turn it into a finished product. When it comes to format, I usually choose between an SVG, a one-pager, or a single-scroll website.</p>
+                    
+                    <div class="insight-box box-blue">
+                        <i class="fab fa-apple"></i>
+                        <p><strong>Pro tip:</strong> LLMs are really good at mimicking Apple’s branding. If you want a more refined look, that’s your go-to for it to emulate.</p>
+                    </div>
+
+                    <h3>Step 3: Deploy and Customize</h3>
+                    <p>I usually paste the code into <strong>CodePen</strong>. Tweak colors, fonts, and spacing to match your brand. You now have a live shareable link.</p>
+                    <p>If you want it as a PDF or image, use free HTML-to-PDF converters. To turn your code into an HTML file:</p>
+                    <ol>
+                        <li>Open the “Notebook” app on your laptop.</li>
+                        <li>Paste the code into a new file.</li>
+                        <li>Save as <em>name.html</em>.</li>
+                        <li>Upload that file to your chosen converter (HTML2JPG or HTML2PDF).</li>
+                    </ol>
+
+                    <h2>Why This Matters</h2>
+                    <p>This lesson came together in sharp focus at a VC training where my business partner and I had to create six presentations in three days. We won all but the first one—and only because we didn’t yet understand the power of this process.</p>
+                    
+                    <p>Here’s what we did differently: we spent our time as a team on the most important part, the <strong>content</strong>. We recorded our conversations and had an AI pull out the core insights. Then I worked with an AI to produce copy that took those unique, experience-backed insights—the ones that could only come from human interaction. We didn’t rely on the LLM to create its own information; we gave it a strong foundation.</p>
+
+                    <p>Then we followed the exact process laid out above: AI turned it into a single-scroll HTML/CSS website. It felt crisp and clean. Our competitors used AI presentation makers and came out with presentations that looked cute but weren’t functional. We ended up winning the overall competition.</p>
+
+                    <div class="insight-box box-purple">
+                        <i class="fas fa-users"></i>
+                        <p><strong>Community Responsibility:</strong> It’s your job to make this useful for you. Then come back and let us know what you built. Share it with the rest of the community. This isn’t about what I can think of. This is about what we can build together.</p>
+                    </div>
+
+                    <h2>The Outcome</h2>
+                    <p>By the end of this process, you’ve built at least one custom sales/persuasive artifact using AI and HTML/CSS without having to learn how to code. You’ve employed coding literacy to create something with tangible value for your career tomorrow.</p>
+
+                    <div class="insight-box box-blue">
+                        <i class="fas fa-rocket"></i>
+                        <div>
+                            <p><strong>If you’re currently employed:</strong> Is there an idea you’re trying to get more people behind? With less than 30 minutes, you can create this artifact and get momentum behind it.</p>
+                        </div>
+                    </div>
+
+                    <div class="insight-box box-pink">
+                        <i class="fas fa-bullseye"></i>
+                        <div>
+                            <p><strong>If you’re pitching yourself or a prospective client:</strong> Instead of sending an email with your hand out, send something visual and interactive. You can get this workflow down to a science and be spitting these out in less than 10 or 15 minutes. There’s nothing more important than momentum in business. Create movement and then create more movement.</p>
+                        </div>
+                    </div>
+
+                    <div class="insight-box box-purple">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <p><strong>Community Responsibility:</strong> It’s your job to make this useful for you. Then come back and let us know what you built. Share it with the rest of the community. This isn’t about what I can think of. This is about what we can build together. This is about how we can learn from each other. That requires being open about what we’re building.</p>
+                            <p style="margin-top: 10px !important;"><em>Consider that your responsibility to this community.</em></p>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 40px; text-align: center; opacity: 0.8;">Questions? Email me at <a href="mailto:keyona@rerev.io" style="color: #0cb8e2;">keyona@rerev.io</a></p>
                 </div>
-
-                <h2>The Skill: Using AI to Generate HTML and CSS</h2>
-                <p>Traditionally, creating polished custom sales materials meant either hiring a designer or spending hours in design tools like Canva. But now, with AI and some basic HTML and CSS knowledge, you can create professional branded one-pagers in minutes.</p>
-                <p>This is a workflow I do sometimes a dozen times a week. Whether I’m creating quick reference materials for a client or full-scale solutions, this is a staple of how I communicate and get people to buy into what I’m pitching.</p>
-
-                <h3>Step 1: Establish Your Copy</h3>
-                <p>Start with the most important part: the content. The entire purpose of using HTML and CSS is not just to make it cute, but to make it real. But you can’t bring to life something you haven’t ironed out first.</p>
-                <p>Have an iterative conversation with your LLM of choice (Claude, ChatGPT, Gemini, or others). Work through questions like: What problem does this solve? Who’s the ideal person to hear this? What action do I want them to take? What do they care about? What’s the end benefit? What resources are needed to pull this off well?</p>
-
-                <div class="insight-card theme-blue">
-                    <i class="fas fa-microphone-alt"></i>
-                    <p><strong>Pro-tip:</strong> Use <strong>SpeechNotes</strong> (or your preferred voice-to-text tool) to freely converse your thoughts instead of typing. Not only is this faster, it’s move effective.</p>
-                </div>
-
-                <h3>Step 2: Generate the HTML and CSS</h3>
-                <p>Once your copy is locked in, ask the AI to turn it into a finished product using HTML and CSS (occasionally JavaScript). You’re creating a stylized, cohesive, put-together piece either as a one-pager or simple website.</p>
-                <p>When it comes to format, I usually choose between an <strong>SVG, a one-pager, or a single-scroll website.</strong></p>
-
-                <div class="insight-card theme-blue">
-                    <i class="fab fa-apple"></i>
-                    <p><strong>Pro tip:</strong> LLMs are really good at mimicking Apple’s branding. If you want a more refined look, that’s your go-to for it to emulate.</p>
-                </div>
-
-                <p>You don’t need to be overly descriptive about what you want it to look like on the first pass. A brief description is enough. It’s much easier to iterate on a draft than to try to invent everything upfront. This is about reducing cognitive burden for yourself, too.</p>
-
-                <h3>Step 3: Deploy and Customize</h3>
-                <p>I usually paste the code into <strong>CodePen</strong> (free, browser-based, no setup required). Tweak colors, fonts, and spacing to match your brand. You now have a live shareable link you can send to anyone.</p>
-                <p>If you want it as a PDF or image instead of a link, use free HTML-to-PDF converters or HTML-to-JPEG tools. To turn the the code you made into a HTML file, simply open the “Notebook” app on your laptop, paste the code into a new file, save as <em>*name of your choice+ “.html”*</em>, close out the Notebook app. Upload the HTML file to the converter.</p>
-
-                <h2>Why This Matters</h2>
-                <p>Instead of a long email or multiple back-and-forth conversations, they can immediately start visualizing and get behind it. Instead of a generic PowerPoint, you’re sending a custom interactive page that feels premium.</p>
-                <p>This lesson came together in sharp focus at a VC training where my business partner and I had to create six presentations in three days. We won all but the first one—and only because we didn’t yet understand the power of this process.</p>
-                
-                <p>Here’s what we did differently: we spent our time as a team on the most important part, the <strong>content</strong>. We recorded our conversations and had an AI pull out the core insights. Then I worked with an AI to produce copy that took those unique, experience-backed insights—the ones that could only come from human interaction and years of experience.</p>
-
-                <p>We didn’t rely on the LLM to create its own information. We gave it a strong foundation. It had a basic understanding, but it couldn’t have gotten specific without our human expertise layered in. That’s what it looks like to take this higher.</p>
-
-                <p>Then we followed the exact process laid out above: AI turned it into a single-scroll HTML/CSS website with a navigation bar at the top. It felt crisp and clean. Our competitors used AI presentation makers and came out with presentations that looked cute but weren’t functional. We ended up winning the presentation side challenges and the overall competition.</p>
-
-                <h2>The Outcome</h2>
-                <p>By the end of this process, you’ve built at least one custom sales/persuasive artifact using AI and HTML/CSS without having to learn how to code. You’ve employed coding literacy to create something with tangible value for your career tomorrow.</p>
-
-                <div class="insight-card theme-blue">
-                    <i class="fas fa-rocket"></i>
-                    <p><strong>If you’re currently employed:</strong> Is there an idea you’re trying to get more people behind? With less than 30 minutes, you can create this artifact and get momentum behind it.</p>
-                </div>
-
-                <div class="insight-card theme-pink">
-                    <i class="fas fa-bullseye"></i>
-                    <p><strong>If you’re pitching yourself or a prospective client:</strong> Instead of sending an email with your hand out, send something visual and interactive. Create movement and then create more movement.</p>
-                </div>
-
-                <div class="insight-card theme-purple">
-                    <i class="fas fa-users"></i>
-                    <p><strong>Community Responsibility:</strong> It’s your job to make this useful for you. Then come back and let us know what you built. This isn’t about what I can think of. This is about what we can build together. Consider that your responsibility to this community.</p>
-                </div>
-
-                <div class="workshop-promo">
-                    <h3 style="margin:0;">Upskill Your Team</h3>
-                    <p>I offer workshops on code literacy, business development, and building resilience in the AI era. Perfect for professional development programming.</p>
-                    <a href="../services.html#workshops">Learn More About Workshops</a>
-                </div>
-
-                <p style="text-align: center; opacity: 0.7; margin-top: 40px;">
-                    Questions? Email me at <a href="mailto:keyona@rerev.io" style="color: #0cb8e2;">keyona@rerev.io</a>
-                </p>
             </div>
         </div>
     </article>
-</div>
+
+
+</body>
+</html>
+
+                    <div class="cta-workshop">
+                        <h3>Bring this to your organization</h3>
+                        <p>I offer workshops on code literacy, business development, and building resilience in the AI era.</p>
+                        <a href="../services.html#workshops" class="btn-workshop">Learn about Workshops</a>
+                    </div>
+                    
+                    <p style="margin-top: 40px; text-align: center; opacity: 0.8;">Questions? Email me at <a href="mailto:keyona@rerev.io" style="color: #0cb8e2;">keyona@rerev.io</a></p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+   
+</body>
+</html>
