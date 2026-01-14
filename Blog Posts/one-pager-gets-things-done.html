@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!-- 
-BLOG TEMPLATE - APPLIED FOR "The One-Pager That Gets Things Done"
-File: blog/one-pager-gets-things-done.html
--->
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,9 +9,51 @@ File: blog/one-pager-gets-things-done.html
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%230cb8e2%22>🧪</text></svg>">
     <meta name="description" content="How to use AI, HTML, and CSS to create persuasive one-pagers that get buy-in and resources. The non-negotiable skill every professional needs in the AI era.">
     <meta name="robots" content="index, follow">
+    
+    <style>
+        /* Fixing the bullet point indentation */
+        .content ul, .content ol {
+            padding-left: 40px;
+            margin-bottom: 20px;
+        }
+        .content li {
+            margin-bottom: 10px;
+        }
+        
+        /* Standardized Insight Box (Cards) */
+        .insight-box {
+            display: flex; /* Keeps icon and text on same line */
+            align-items: flex-start;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 25px;
+            background: #f0f9ff; /* Consistent light blue */
+            border-left: 5px solid #0cb8e2;
+            border-radius: 8px; /* Rounded edges */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .insight-box i {
+            color: #0cb8e2;
+            font-size: 22px;
+            margin-top: 3px; /* Aligns icon with first line of text */
+        }
+
+        .insight-box p {
+            margin: 0 !important;
+        }
+
+        /* Specific styles for different box types while keeping shape uniform */
+        .insight-box.pro-tip { background: #f0f9ff; border-left-color: #0cb8e2; }
+        .insight-box.real-world { background: #fff8e1; border-left-color: #ffb300; }
+        .insight-box.community { background: #f3e5f5; border-left-color: #9c27b0; }
+        
+        /* Icon colors for different boxes */
+        .insight-box.real-world i { color: #ffb300; }
+        .insight-box.community i { color: #9c27b0; }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="../index.html" class="logo">
@@ -33,15 +70,12 @@ File: blog/one-pager-gets-things-done.html
         </div>
     </nav>
 
-    <!-- Blog Post Content Area -->
     <article class="section">
         <div class="container">
-            <!-- Back to Blog -->
             <div class="breadcrumb">
                 <a href="../blog.html"><i class="fas fa-arrow-left"></i> Back to Blog</a>
             </div>
             
-            <!-- Your Content -->
             <div class="blog-post-content">
                 <h1 class="post-title">The One-Pager That Gets Things Done</h1>
                 
@@ -62,27 +96,21 @@ File: blog/one-pager-gets-things-done.html
                 <div class="featured-image">
                     <img src="../Assets!/The-One-Pager-That-Gets-Things-Done-Blog-Post.png" alt="The One-Pager That Gets Things Done: AI + HTML/CSS Workflow">
                 </div>        
+
                 <div class="content">
                     <p class="lead">How to use AI, HTML, and CSS to turn your ideas into action. The non-negotiable skill every professional needs in the AI era.</p>
                     
-                    <div class="insight-box" style="margin: 30px 0; padding: 20px; background: #f0f9ff; border-left: 4px solid #0cb8e2; border-radius: 4px;">
-                        <i class="fas fa-quote-left" style="color: #0cb8e2; font-size: 20px; float: left; margin-right: 10px;"></i>
-                        <p style="margin: 0; font-style: italic;"><strong>"Greatness is in the agency of others"</strong> - Scott Galloway</p>
+                    <div class="insight-box">
+                        <i class="fas fa-quote-left"></i>
+                        <p><strong>"Greatness is in the agency of others"</strong> - Scott Galloway</p>
                     </div>
                     
                     <h2>TLDR for the Busy Caveman</h2>
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin: 20px 0; border: 1px solid #eee;">
                         <p>You have idea. Boss no give resources. Problem not words. Problem picture. Picture make boss brain work less. Less work mean yes. Yes good!</p>
-                        
                         <p>Picture come from copy. Copy must good first. No good copy, no good picture. Ask AI help copy. Make copy tight. Make copy persuasive.</p>
-                        
                         <p>AI turn copy into code. HTML and CSS make pretty. You no need know code. You just tell AI what want. AI give code. You paste in CodePen. Done.</p>
-                        
                         <p>CodePen free. Browser work. No install. No pay. Picture now live. You send link. Boss see. Boss understand. Boss say yes. Yes good!!</p>
-                        
-                        <p>Copy take time. Picture take fast. Picture take 15 minute from start to finish. That momentum. Momentum move career forward.</p>
-                        
-                        <p>You not just learn skill. You learn responsibility. You come back tell us what you build. We learn from you. Community grow. That how this work.</p>
                     </div>
                     
                     <h2>Building Persuasive One-Pagers with AI</h2>
@@ -90,11 +118,7 @@ File: blog/one-pager-gets-things-done.html
                     <h3>The Philosophy</h3>
                     <p>Your success completely lies in the agency of others. That's not me being dark, it's just reality. You have an idea, but what you don't have is allocated resources and buy-in.</p>
                     
-                    <p>At ReRev Labs, we believe sales and marketing are not job roles. They're skills every working professional needs. The new age of AI has only made that more clear.</p>
-                    
-                    <p>A big part of selling is succinctly, quickly, and effectively communicating your ideas. The difference between "that sounds interesting" and "let's move forward" often comes down to someone's ability to understand what you're trying to communicate. Not just understand it, but visualize it in a way that makes it easy to act on.</p>
-                    
-                    <div class="insight-box">
+                    <div class="insight-box pro-tip">
                         <i class="fas fa-lightbulb"></i>
                         <p><strong>Key Insight:</strong> When you show someone a visual, a clean professional one-pager or interactive pitch, it becomes real. That idea goes from intangible to concrete.</p>
                     </div>
@@ -102,12 +126,8 @@ File: blog/one-pager-gets-things-done.html
                     <h2>The Skill: Using AI to Generate HTML and CSS</h2>
                     <p>Traditionally, creating polished custom sales materials meant either hiring a designer or spending hours in design tools like Canva. But now, with AI and some basic HTML and CSS knowledge, you can create professional branded one-pagers in minutes.</p>
                     
-                    <p>This is a workflow I do sometimes a dozen times a week. Whether I'm creating quick reference materials for a client or full-scale solutions, this is a staple of how I communicate and get people to buy into what I'm pitching.</p>
-                    
                     <h3>Step 1: Establish Your Copy</h3>
-                    <p>Start with the most important part: the content. The entire purpose of using HTML and CSS is not just to make it cute, but to make it real. But you can't bring to life something you haven't ironed out first.</p>
-                    
-                    <p>Have an iterative conversation with your LLM of choice (Claude, ChatGPT, Gemini, or others). Work through questions like:</p>
+                    <p>Start with the most important part: the content. The entire purpose of using HTML and CSS is not just to make it cute, but to make it real.</p>
                     
                     <ul>
                         <li>What problem does this solve?</li>
@@ -118,74 +138,48 @@ File: blog/one-pager-gets-things-done.html
                         <li>What resources are needed to pull this off well?</li>
                     </ul>
                     
-                    <div class="insight-box">
+                    <div class="insight-box pro-tip">
                         <i class="fas fa-microphone-alt"></i>
                         <p><strong>Pro-tip:</strong> Use SpeechNotes (or your preferred voice-to-text tool) to freely converse your thoughts instead of typing. Not only is this faster, it's more effective.</p>
                     </div>
                     
-                    <p>Iterate until the copy is tight and persuasive. Put yourself in their shoes.</p>
-                    
                     <h3>Step 2: Generate the HTML and CSS</h3>
-                    <p>Once your copy is locked in, ask the AI to turn it into a finished product using HTML and CSS (occasionally JavaScript, but start with HTML and CSS). You're creating a stylized, cohesive, put-together piece either as a one-pager or simple website.</p>
+                    <p>Once your copy is locked in, ask the AI to turn it into a finished product using HTML and CSS. You're creating a stylized, cohesive, put-together piece.</p>
                     
-                    <p>When it comes to format, I usually choose between an SVG, a one-pager, or a single-scroll website.</p>
-                    
-                    <div class="insight-box">
+                    <div class="insight-box pro-tip">
                         <i class="fab fa-apple"></i>
                         <p><strong>Pro tip:</strong> LLMs are really good at mimicking Apple's branding. If you want a more refined look, that's your go-to for it to emulate.</p>
                     </div>
                     
-                    <p>You don't need to be overly descriptive about what you want it to look like on the first pass. A brief description is enough. It's much easier to iterate on a draft than to try to invent everything upfront. This is about reducing cognitive burden for yourself, too.</p>
-                    
                     <h3>Step 3: Deploy and Customize</h3>
-                    <p>I usually paste the code into CodePen (free, browser-based, no setup required). You can log in with Google and be active within 60 seconds.</p>
-                    
-                    <p>Tweak colors, fonts, and spacing to match your brand. You now have a live shareable link you can send to anyone.</p>
-                    
-                    <p>If you want it as a PDF or image instead of a link, use free HTML-to-PDF converters or HTML-to-JPEG tools. Both are browser-based. Note: Sometimes you can copy and paste into the converter, other times you'll have to upload an HTML file. To turn the code you made into an HTML file:</p>
+                    <p>I usually paste the code into CodePen (free, browser-based, no setup required). You now have a live shareable link you can send to anyone.</p>
                     
                     <ol>
                         <li>Open the "Notebook" app on your laptop</li>
                         <li>Paste the code into a new file</li>
                         <li>Save as *name of your choice* + ".html"</li>
-                        <li>Take note of where the file is being saved</li>
-                        <li>Close out the Notebook app</li>
                         <li>Upload the HTML file to the converter</li>
                     </ol>
                     
-                    <h2>Why This One-Pager Approach Matters</h2>
-                    <p>Instead of a long email or multiple back-and-forth conversations where you're trying to describe what you want, they can immediately start visualizing and get behind it.</p>
-                    
-                    <p>Instead of a generic PowerPoint, you're sending a custom interactive page that feels premium or a polished one-pager in less than 15 minutes.</p>
-                    
-                    <p>This lesson came together in sharp focus at a VC training where my business partner and I had to create six presentations in three days on different topics: LP fundraising strategy, exit processes, leading founders through exits, etc. We won all but the first one - and only because we didn't yet understand the power of this process.</p>
-                    
-                    <div class="insight-box" style="background: #fff8e1; border-left-color: #ffb300;">
+                    <div class="insight-box real-world">
                         <i class="fas fa-trophy"></i>
                         <p><strong>Real-World Win:</strong> We spent time on content, used AI for formatting, and won against competitors using AI presentation makers. Theirs looked cute; ours was functional and persuasive.</p>
                     </div>
                     
-                    <h2>The Outcome: From Idea to Action</h2>
-                    <p>By the end of this process, you've built at least one custom sales/persuasive artifact using AI and HTML/CSS without having to learn how to code. You've employed coding literacy to create something with tangible value for your career tomorrow.</p>
-                    
-                    <div style="background: #e8f5e9; padding: 25px; border-radius: 8px; margin: 25px 0;">
+                    <div style="background: #e8f5e9; padding: 25px; border-radius: 8px; margin: 25px 0; border-left: 5px solid #2e7d32;">
                         <h3 style="color: #2e7d32; margin-top: 0;">Your One-Pager Action Plan:</h3>
-                        
-                        <p><strong>If you're currently employed:</strong> Is there an idea you're trying to get more people behind? With less than 30 minutes, you can create this one-pager and get momentum behind it.</p>
-                        
-                        <p><strong>If you're pitching yourself or a prospective client:</strong> Instead of sending an email with your hand out, send something visual and interactive. You can get this workflow down to a science and be spitting these out in less than 10 or 15 minutes and get momentum behind it. Because there's nothing more important than momentum in business. Create movement and then create more movement.</p>
+                        <p><strong>If you're currently employed:</strong> Is there an idea you're trying to get more people behind? With less than 30 minutes, you can create this one-pager and get momentum.</p>
+                        <p><strong>If you're pitching yourself:</strong> Instead of sending an email with your hand out, send something visual and interactive. Momentum is everything in business.</p>
                     </div>
                     
-                    <div class="insight-box" style="background: #f3e5f5; border-left-color: #9c27b0;">
+                    <div class="insight-box community">
                         <i class="fas fa-users"></i>
-                        <p><strong>Community Responsibility:</strong> It's your job to make this useful for you. Then come back and let us know what you built. Share it with the rest of the community. This isn't about what I can think of. This is about what we can build together.</p>
+                        <p><strong>Community Responsibility:</strong> It's your job to make this useful for you. Then come back and let us know what you built. Share it with the rest of the community.</p>
                     </div>
                     
-                    <p>Bring this one-pager approach to your organization.</p>
-                    
-                    <div class="cta-inline">
-                        <p><strong>Looking to upskill your team?</strong> I offer workshops on code literacy, business development, and building resilience in the AI era. Perfect for professional development programming.</p>
-                        <a href="../services.html#workshops" class="btn-service">
+                    <div class="cta-inline" style="background: #f8f9fa; padding: 25px; border-radius: 8px; text-align: center; border: 1px dashed #0cb8e2;">
+                        <p><strong>Looking to upskill your team?</strong> I offer workshops on code literacy, business development, and building resilience in the AI era.</p>
+                        <a href="../services.html#workshops" class="btn-service" style="display: inline-block; background: #0cb8e2; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin-top: 10px;">
                             <i class="fas fa-chalkboard-teacher"></i> Learn About Workshops
                         </a>
                     </div>
@@ -193,23 +187,16 @@ File: blog/one-pager-gets-things-done.html
                     <p style="margin-top: 30px; font-style: italic;">Questions? Email me at <a href="mailto:keyona@rerev.io">keyona@rerev.io</a></p>
                 </div>
                 
-                <!-- Post Footer -->
                 <div class="post-footer">
                     <div class="post-tags">
                         <span><i class="fas fa-tags"></i> Tags:</span>
-                        <a href="#">One-Pager</a>
-                        <a href="#">AI Productivity</a>
-                        <a href="#">HTML/CSS</a>
-                        <a href="#">Career Advancement</a>
-                        <a href="#">Persuasive Communication</a>
-                        <a href="#">Professional Skills</a>
+                        <a href="#">One-Pager</a> <a href="#">AI Productivity</a> <a href="#">HTML/CSS</a>
                     </div>
                     
                     <div class="post-share">
                         <span>Share this article:</span>
-                        <a href="https://twitter.com/intent/tweet?text=The%20One-Pager%20That%20Gets%20Things%20Done%20-%20AI%20%2B%20HTML%2FCSS%20Workflow&url=https://rerev.io/blog/one-pager-gets-things-done" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rerev.io/blog/one-pager-gets-things-done" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://rerev.io/blog/one-pager-gets-things-done" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" onclick="window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(window.location.href)); return false;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href)); return false;"><i class="fab fa-linkedin"></i></a>
                         <a href="#" class="copy-link" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied!'); return false;"><i class="fas fa-link"></i></a>
                     </div>
                 </div>
@@ -217,27 +204,17 @@ File: blog/one-pager-gets-things-done.html
         </div>
     </article>
     
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-flask"></i> ReRev Labs
-                </div>
+                <div class="footer-logo"><i class="fas fa-flask"></i> ReRev Labs</div>
                 <div class="footer-info">
                     <p><i class="fas fa-envelope"></i> keyona@rerev.io</p>
                     <p><i class="fas fa-map-marker-alt"></i> Birmingham, AL</p>
                 </div>
-                <div class="footer-nav">
-                    <a href="../index.html">Home</a>
-                    <a href="../services.html">Services</a>
-                    <a href="../about.html">About</a>
-                    <a href="../blog.html">Blog</a>
-                    <a href="../contact.html">Contact</a>
-                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 ReRev Labs. All rights reserved.</p>
+                <p>&copy; 2026 ReRev Labs. All rights reserved.</p>
             </div>
         </div>
     </footer>
