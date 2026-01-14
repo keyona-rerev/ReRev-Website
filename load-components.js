@@ -1,8 +1,17 @@
 // load-components.js - Loads navigation and footer on all pages
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Figure out if we're in a blog post
+    const currentPath = window.location.pathname;
+    const isBlogPost = currentPath.includes('Blog%20Posts') || 
+                       currentPath.includes('Blog Posts') || 
+                       window.location.href.includes('Blog Posts');
+    
+    // Set base path for includes
+    const basePath = isBlogPost ? '../' : './';
+    
     // Load navigation
-    fetch('navigation.html')
+    fetch(basePath + 'navigation.html')
         .then(response => response.text())
         .then(data => {
             // Insert navigation at the beginning of the body
@@ -12,16 +21,16 @@ document.addEventListener('DOMContentLoaded', function() {
             // Make mobile menu work
             initMobileMenu();
         })
-        .catch(error => console.log('Navigation loaded fine'));
+        .catch(error => console.error('Error loading navigation:', error));
     
     // Load footer
-    fetch('footer.html')
+    fetch(basePath + 'footer.html')
         .then(response => response.text())
         .then(data => {
             // Insert footer at the end of the body
             document.body.insertAdjacentHTML('beforeend', data);
         })
-        .catch(error => console.log('Footer loaded fine'));
+        .catch(error => console.error('Error loading footer:', error));
     
     // Figure out which page we're on and highlight the right nav link
     function setActiveNavLink() {
@@ -39,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const linkPage = link.getAttribute('data-page');
             
             // Special case for index.html
-            if (currentPage === '' || currentPage === 'index.html') {
+            if (currentPage === '' || currentPage === 'index.html' || currentPage === '../index.html') {
                 if (linkPage === 'index') {
                     link.classList.add('active');
                 }
