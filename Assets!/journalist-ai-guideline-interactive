@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Journalists: Workflow & Principles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            background: #1e3a8a;
+            border-bottom: 3px solid #3b82f6;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .tab.active {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 40px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        /* Life of a Story - Main Vertical Layout */
+        .workflow-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stage-small {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stage-large {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            border: 3px solid #fbbf24;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        .stage-number {
+            background: rgba(255, 255, 255, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .stage-small .stage-number {
+            width: 35px;
+            height: 35px;
+        }
+
+        .stage-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .stage-small .stage-title {
+            font-size: 1em;
+        }
+
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .stage-details {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            display: none;
+        }
+
+        .stage-details.open {
+            display: block;
+        }
+
+        .ai-skill-label {
+            background: #fbbf24;
+            color: #1e3a8a;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .skill-description {
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* Overview Grid Layout */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .overview-stage {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 10px;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overview-stage.highlight {
+            border: 2px solid #fbbf24;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+        }
+
+        .overview-stage .stage-number {
+            margin-bottom: 10px;
+        }
+
+        .overview-stage .stage-title {
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        /* Principles Section */
+        .principles-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .principle {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .principle-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fbbf24;
+        }
+
+        .principle-content {
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .principle-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .principle-content li {
+            margin-bottom: 8px;
+        }
+
+        /* AI Skills Reference */
+        .skills-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border-radius: 12px;
+            padding: 25px;
+            color: white;
+            margin-bottom: 20px;
+            border-left: 5px solid #fbbf24;
+        }
+
+        .skill-stage {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .skill-detail {
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        /* Warning callouts */
+        .mishap-alert {
+            background: rgba(251, 191, 36, 0.2);
+            border-left: 4px solid #fbbf24;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: #fef3c7;
+        }
+
+        .mishap-alert strong {
+            color: #fbbf24;
+        }
+
+        /* Mishaps Section */
+        .mishaps-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .mishap-card {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            border-radius: 12px;
+            padding: 25px;
+            color: white;
+            margin-bottom: 20px;
+            border-left: 5px solid #fbbf24;
+        }
+
+        .mishap-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .mishap-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .mishap-description {
+            line-height: 1.7;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .mishap-solution {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .mishap-solution strong {
+            color: #fbbf24;
+        }
+
+        @media (max-width: 1200px) {
+            .overview-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .tab {
+                padding: 15px 10px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'workflow')">Life of a Story</div>
+            <div class="tab" onclick="openTab(event, 'principles')">AI Principles</div>
+            <div class="tab" onclick="openTab(event, 'skills')">AI Skills Reference</div>
+            <div class="tab" onclick="openTab(event, 'mishaps')">AI Mishaps</div>
+            <div class="tab" onclick="openTab(event, 'overview')">Overview</div>
+        </div>
+
+        <!-- Tab 1: Life of a Story (Detailed Vertical) -->
+        <div id="workflow" class="tab-content active">
+            <h1>The Life of a Story</h1>
+            <div class="workflow-vertical">
+                
+                <!-- Stage 1 -->
+                <div class="stage-small">
+                    <span class="stage-number">1</span>
+                    <span class="stage-title">Topic Monitoring & Inbound Sources</span>
+                </div>
+
+                <!-- Stage 2 - Highlighted with Toggle -->
+                <div class="stage-large">
+                    <div class="stage-header" onclick="toggleStage(2)">
+                        <span class="stage-number">2</span>
+                        <span class="stage-title">Fuzzy Idea / Initial Spark</span>
+                        <span class="toggle-icon" id="toggle-2">▼</span>
+                    </div>
+                    <div class="stage-details" id="details-2">
+                        <span class="ai-skill-label">AI SKILLS</span>
+                        <div class="skill-description">
+                            <strong>Voice-to-Text Conversation Facilitation:</strong> Use AI voice recorders or speech-to-text tools to have a conversation out loud with an AI. Dump your jumbled thoughts, then copy/paste the transcript into an LLM to help organize and clarify where your head is at.
+                            <br><br>
+                            <strong>Initial Gap Analysis:</strong> Ask the AI to identify what gaps exist in your initial thinking—what's missing, what needs exploration, what assumptions you're making.
+                        </div>
+                        <div class="mishap-alert">
+                            <strong>⚠️ Watch Out:</strong> AI Purgatory - If you're spending more time iterating with AI than it would take to think it through yourself, step back. See the Mishaps tab for guidance.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="stage-small">
+                    <span class="stage-number">3</span>
+                    <span class="stage-title">Hypothesis Formation / Question Framing</span>
+                </div>
+
+                <!-- Stage 4 - Highlighted with Toggle -->
+                <div class="stage-large">
+                    <div class="stage-header" onclick="toggleStage(4)">
+                        <span class="stage-number">4</span>
+                        <span class="stage-title">Research, Angle Discovery & Stakeholder Consideration</span>
+                        <span class="toggle-icon" id="toggle-4">▼</span>
+                    </div>
+                    <div class="stage-details" id="details-4">
+                        <span class="ai-skill-label">AI SKILLS</span>
+                        <div class="skill-description">
+                            <strong>Gap Analysis (After Angle Selection):</strong> Once you've chosen your angle, ask the AI: "Based on this angle, what gaps exist in my research? What perspectives am I missing? What questions haven't I asked?"
+                            <br><br>
+                            This helps you identify blind spots in your chosen approach and ensures you're considering the full landscape of stakeholders and perspectives.
+                        </div>
+                        <div class="mishap-alert">
+                            <strong>⚠️ Watch Out:</strong> AI Off the Rails - If AI keeps giving you incorrect info, that's a signal you need better primary data. See the Mishaps tab.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 5 -->
+                <div class="stage-small">
+                    <span class="stage-number">5</span>
+                    <span class="stage-title">Source Identification & Outreach</span>
+                </div>
+
+                <!-- Stage 6 - Highlighted with Toggle -->
+                <div class="stage-large">
+                    <div class="stage-header" onclick="toggleStage(6)">
+                        <span class="stage-number">6</span>
+                        <span class="stage-title">Interviewing & Primary Reporting</span>
+                        <span class="toggle-icon" id="toggle-6">▼</span>
+                    </div>
+                    <div class="stage-details" id="details-6">
+                        <span class="ai-skill-label">AI SKILLS</span>
+                        <div class="skill-description">
+                            <strong>Resource Priming:</strong> Record your interviews and convert them to searchable text using transcription tools. This makes it much easier to reference specific quotes and themes later.
+                            <br><br>
+                            Resource priming is about using LLMs to make your reference materials easier to comprehend and navigate—turning audio into organized, searchable text is a prime example.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 7 - Highlighted with Toggle -->
+                <div class="stage-large">
+                    <div class="stage-header" onclick="toggleStage(7)">
+                        <span class="stage-number">7</span>
+                        <span class="stage-title">Outline</span>
+                        <span class="toggle-icon" id="toggle-7">▼</span>
+                    </div>
+                    <div class="stage-details" id="details-7">
+                        <span class="ai-skill-label">AI SKILLS</span>
+                        <div class="skill-description">
+                            <strong>Outline Check / Bias Interrogation:</strong> Before drafting, pause and ask the AI: "Based on this outline, what will readers assume my bias is? Whose story is getting told, and whose isn't?"
+                            <br><br>
+                            This is your chance to examine the subjective choices you're making in structure and emphasis before they're baked into the full draft.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 8 - Highlighted with Toggle -->
+                <div class="stage-large">
+                    <div class="stage-header" onclick="toggleStage(8)">
+                        <span class="stage-number">8</span>
+                        <span class="stage-title">Draft (with ongoing fact-checking)</span>
+                        <span class="toggle-icon" id="toggle-8">▼</span>
+                    </div>
+                    <div class="stage-details" id="details-8">
+                        <span class="ai-skill-label">AI SKILLS</span>
+                        <div class="skill-description">
+                            <strong>Claim and Assumption Categorization:</strong> Once you've completed your draft, ask the AI to conduct a claim identification analysis. Have it identify:
+                            <ul>
+                                <li>What claims are you making?</li>
+                                <li>What assumptions underlie those claims?</li>
+                                <li>What perspective or angle is centered?</li>
+                                <li>What weight is given to different stakeholders?</li>
+                            </ul>
+                            This helps you see the subjective choices you've made and decide if they align with your intentions.
+                        </div>
+                        <div class="mishap-alert">
+                            <strong>⚠️ Watch Out:</strong> AI Off the Rails - Fact-check AI's analysis against your actual sources. If it's making incorrect claims about your draft, feed it better context.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stages 9-14 (Small) -->
+                <div class="stage-small">
+                    <span class="stage-number">9</span>
+                    <span class="stage-title">Editor Review & Collaboration</span>
+                </div>
+
+                <div class="stage-small">
+                    <span class="stage-number">10</span>
+                    <span class="stage-title">Legal/Ethics Review</span>
+                </div>
+
+                <div class="stage-small">
+                    <span class="stage-number">11</span>
+                    <span class="stage-title">Final Fact-Check & Copy Edit</span>
+                </div>
+
+                <div class="stage-small">
+                    <span class="stage-number">12</span>
+                    <span class="stage-title">Publish</span>
+                </div>
+
+                <div class="stage-small">
+                    <span class="stage-number">13</span>
+                    <span class="stage-title">Engagement & Follow-up</span>
+                </div>
+
+                <div class="stage-small">
+                    <span class="stage-number">14</span>
+                    <span class="stage-title">Impact Tracking</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tab 2: AI Principles -->
+        <div id="principles" class="tab-content">
+            <h1>AI Principles for Journalists</h1>
+            <div class="principles-container">
+                
+                <div class="principle">
+                    <div class="principle-title">Cognitive Load Reduction</div>
+                    <div class="principle-content">
+                        Think of AI as an intelligent word processor—not a magic solution, but a tool to reduce cognitive load in strategic places. When you can reduce mental effort in some areas, you free up capacity to either:
+                        <ul>
+                            <li><strong>Work smarter and faster</strong> on the same quality of output</li>
+                            <li><strong>Go harder in the paint</strong> on the parts that matter most—deeper research, better interviews, more thoughtful analysis</li>
+                        </ul>
+                        The goal isn't to replace your thinking, but to clear space for better thinking.
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <div class="principle-title">There Is No Such Thing as Objectivity</div>
+                    <div class="principle-content">
+                        We are all subjective beings processing reality through our lived experience. Claiming objectivity as a goal is both impossible and sets you up for false success.
+                        <br><br>
+                        <strong>Instead, embrace subjectivity consciously:</strong>
+                        <ul>
+                            <li>The angle you choose affects what story gets told</li>
+                            <li>The stakeholders you define and the weight you give them shapes the narrative</li>
+                            <li>Curation, editing, and revision are inherently subjective acts</li>
+                            <li>Even showing "all perspectives equally" is a strong editorial choice</li>
+                        </ul>
+                        <strong>Use AI to illuminate these choices:</strong> Ask it to help you see whose perspective is centered, what assumptions you're making, and what voices might be missing. Be aware of your subjective lens, not blind to it.
+                        <br><br>
+                        <em>Example:</em> In a story about oppression, giving equal weight to oppressor and oppressed perspectives can be misleading. The consequences are not symmetric. Make your choices with awareness, not under the illusion of neutrality.
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <div class="principle-title">Resource Priming</div>
+                    <div class="principle-content">
+                        Use LLMs to make your reference materials easier to comprehend and navigate. This means:
+                        <ul>
+                            <li>Converting interviews from audio to searchable text</li>
+                            <li>Organizing research notes into structured formats</li>
+                            <li>Creating summaries of long documents for quick reference</li>
+                            <li>Extracting key themes from multiple sources</li>
+                        </ul>
+                        The goal is to reduce friction in accessing the information you've gathered, so you can spend more energy on analysis and synthesis.
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <div class="principle-title">You Are in the Driver's Seat</div>
+                    <div class="principle-content">
+                        Think of AI as an intelligent word processor, not an ultimate source of truth. <strong>You decide when, how, and if to use these tools.</strong>
+                        <br><br>
+                        <strong>Expect mistakes.</strong> AI will get things wrong. Your discernment is critical. The more seamless your integration of judgment with the tool, the less time you'll spend in "AI Purgatory"—that frustrating place where you're spending more time going back and forth with AI than it would take to just do it yourself.
+                        <br><br>
+                        <strong>Some things should take time.</strong> Not everything needs to be faster. Allow work that deserves depth to take the time it needs. You're absolutely in control here.
+                        <br><br>
+                        Be aware of how your colleagues and fellow journalists are using AI, and operate accordingly. Let your discernment guide every interaction.
+                    </div>
+                </div>
+
+                <div class="principle">
+                    <div class="principle-title">Natural Language Replaces Keyword Search</div>
+                    <div class="principle-content">
+                        We grew up in the age where advanced keyword search was a crucial skill—knowing how to craft the right Google query, click through multiple links, and connect dots across sources.
+                        <br><br>
+                        <strong>LLMs change this.</strong> For about 80% of inquiries, you can now use natural language instead of keyword gymnastics.
+                        <br><br>
+                        <em>Example:</em> Previously, "I want to understand how a city budget works in context" would require multiple Google sessions, link-clicking, and significant time connecting dots. Now, you can just ask that question directly and get contextual understanding much faster.
+                        <br><br>
+                        This represents a significant reduction in our collective cognitive load—freeing up mental energy for deeper analysis and synthesis.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tab 3: AI Skills Reference -->
+        <div id="skills" class="tab-content">
+            <h1>AI Skills Quick Reference</h1>
+            <div class="skills-container">
+
+                <div class="skill-card">
+                    <div class="skill-stage">Stage 2: Fuzzy Idea / Initial Spark</div>
+                    <div class="skill-name">Voice-to-Text Conversation & Initial Gap Analysis</div>
+                    <div class="skill-detail">
+                        Use speech-to-text tools to have a conversation with an AI, dumping your jumbled thoughts. Then use an LLM to organize and clarify your thinking, and identify gaps in your initial concept.
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-stage">Stage 4: Research, Angle Discovery & Stakeholder Consideration</div>
+                    <div class="skill-name">Gap Analysis (Post-Angle)</div>
+                    <div class="skill-detail">
+                        After choosing your angle, ask AI: "What gaps exist in my research? What perspectives am I missing? What questions haven't I asked?" This reveals blind spots in your chosen approach.
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-stage">Stage 6: Interviewing & Primary Reporting</div>
+                    <div class="skill-name">Resource Priming (Interview Transcription)</div>
+                    <div class="skill-detail">
+                        Convert interview recordings to searchable text using transcription tools. Makes it much easier to reference specific quotes and identify themes across multiple conversations.
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-stage">Stage 7: Outline</div>
+                    <div class="skill-name">Outline Check / Bias Interrogation</div>
+                    <div class="skill-detail">
+                        Ask AI: "Based on this outline, what will readers assume my bias is? Whose story is getting told?" Examines your subjective choices in structure and emphasis before drafting.
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-stage">Stage 8: Draft</div>
+                    <div class="skill-name">Claim and Assumption Categorization</div>
+                    <div class="skill-detail">
+                        Request a claim identification analysis from AI. Have it identify: What claims are you making? What assumptions underlie them? What perspective is centered? What weight is given to different stakeholders?
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-stage">Stages 1, 3, 4: Throughout Research Process</div>
+                    <div class="skill-name">Natural Language Search</div>
+                    <div class="skill-detail">
+                        Ask questions conversationally instead of crafting keyword searches. Example: "How does a city budget work in context?" instead of multiple Google sessions. Works for ~80% of inquiries and dramatically reduces cognitive load.
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-stage">Stages 7, 8, 12: Outline, Draft, Publish Prep</div>
+                    <div class="skill-name">HTML/CSS Visual Reference Generation</div>
+                    <div class="skill-detail">
+                        NOT AI image generation. Have AI create HTML/CSS mockups of timelines, visualizations, or infographics based on your copy. Use these as reference images in Canva or other design tools. Reduces 3+ hour design work to under 90 minutes by giving you a visual starting point to revise from.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tab 4: AI Mishaps -->
+        <div id="mishaps" class="tab-content">
+            <h1>AI Mishaps to Watch For</h1>
+            <div class="mishaps-container">
+
+                <div class="mishap-card">
+                    <div class="mishap-icon">⚠️</div>
+                    <div class="mishap-name">AI Off the Rails / Incorrect Information</div>
+                    <div class="mishap-description">
+                        When AI repeatedly gives you incorrect information or makes claims that don't align with your sources, it's not being malicious—it's working with limited or incorrect training data.
+                        <br><br>
+                        Think of it like talking to a genius who doesn't know everything. They can take limited initial information and create something that's logically consistent and sounds convincing, but may be factually wrong. The AI can run with incomplete data and produce outputs that make logical sense without being true.
+                    </div>
+                    <div class="mishap-solution">
+                        <strong>Solution:</strong> When you find yourself correcting AI repeatedly, that's a signal. You need to feed it better primary data—interviews, verified sources, original documents, or research. The problem isn't the AI; it's that the information it was trained on for this specific topic is inadequate or incorrect.
+                    </div>
+                </div>
+
+                <div class="mishap-card">
+                    <div class="mishap-icon">🔄</div>
+                    <div class="mishap-name">AI Purgatory</div>
+                    <div class="mishap-description">
+                        You've spent more time going back and forth with AI than it would have taken to do the task yourself. You're stuck in endless iterations, refinements, and re-prompting without making real progress.
+                        <br><br>
+                        This happens when there's a mismatch between your discernment, the tool's capabilities, and your end goal. It's frustrating, time-consuming, and counterproductive.
+                    </div>
+                    <div class="mishap-solution">
+                        <strong>Solution:</strong> Step back. Ask yourself:
+                        <ul style="margin-top: 10px;">
+                            <li>Am I providing clear enough prompts and context?</li>
+                            <li>Does this task actually benefit from AI assistance?</li>
+                            <li>Would it be faster to just do this myself?</li>
+                        </ul>
+                        The goal is seamless integration of your discernment with the tool. If you're spending excessive time iterating, either refine your approach or abandon AI for this particular task. You're in the driver's seat—don't be afraid to take back the wheel.
+                    </div>
+                </div>
+
+                <div class="mishap-card">
+                    <div class="mishap-icon">🎯</div>
+                    <div class="mishap-name">Treating AI as Ultimate Truth</div>
+                    <div class="mishap-description">
+                        Accepting AI outputs as fact without verification. Assuming that because AI sounds confident, it must be correct. Forgetting that AI is a tool, not a journalist.
+                        <br><br>
+                        Remember: There is no ultimate source of truth. The act of journalism is understanding that any one story is actually 20 stories—the one being told, the one being minimized, the one intentionally left out.
+                    </div>
+                    <div class="mishap-solution">
+                        <strong>Solution:</strong> Think of AI as an intelligent word processor, not an oracle. Use your discernment, verify claims against primary sources, and remember that your editorial judgment is irreplaceable. AI can help you work smarter, but it can't replace the critical thinking and ethical considerations that define good journalism.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tab 5: Overview -->
+        <div id="overview" class="tab-content">
+            <h1>Story Workflow Overview</h1>
+            <div class="overview-grid">
+                <!-- Row 1: Stages 1-7 -->
+                <div class="overview-stage">
+                    <span class="stage-number">1</span>
+                    <span class="stage-title">Topic Monitoring & Inbound Sources</span>
+                </div>
+                <div class="overview-stage highlight">
+                    <span class="stage-number">2</span>
+                    <span class="stage-title">Fuzzy Idea</span>
+                </div>
+                <div class="overview-stage">
+                    <span class="stage-number">3</span>
+                    <span class="stage-title">Hypothesis Formation</span>
+                </div>
+                <div class="overview-stage highlight">
+                    <span class="stage-number">4</span>
+                    <span class="stage-title">Research & Angle Discovery</span>
+                </div>
+                <div class="overview-stage">
+                    <span class="stage-number">5</span>
+                    <span class="stage-title">Source Outreach</span>
+                </div>
+                <div class="overview-stage highlight">
+                    <span class="stage-number">6</span>
+                    <span class="stage-title">Interviewing</span>
+                </div>
+                <div class="overview-stage highlight">
+                    <span class="stage-number">7</span>
+                    <span class="stage-title">Outline</span>
+                </div>
+
+                <!-- Row 2: Stages 8-14 -->
+                <div class="overview-stage highlight">
+                    <span class="stage-number">8</span>
+                    <span class="stage-title">Draft</span>
+                </div>
+                <div class="overview-stage">
+                    <span class="stage-number">9</span>
+                    <span class="stage-title">Editor Review</span>
+                </div>
+                <div class="overview-stage">
+                    <span class="stage-number">10</span>
+                    <span class="stage-title">Legal/Ethics Review</span>
+                </div>
+                <div class="overview-stage">
+                    <span class="stage-number">11</span>
+                    <span class="stage-title">Final Fact-Check</span>
+                </div>
+                <div class="overview-stage">
+                    <span class="stage-number">12</span>
+                    <span class="stage-title">Publish</span>
+                </div>
+                <div class="overview-stage">
+                    <span class="stage-number">13</span>
+                    <span class="stage-title">Engagement</span>
+                </div>
+                <div class="overview-stage">
+                    <span class="stage-number">14</span>
+                    <span class="stage-title">Impact Tracking</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            // Remove active class from all tabs
+            const tabs = document.getElementsByClassName('tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // Show current tab and mark as active
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function toggleStage(stageNumber) {
+            const details = document.getElementById('details-' + stageNumber);
+            const icon = document.getElementById('toggle-' + stageNumber);
+            
+            details.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
