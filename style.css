@@ -1289,3 +1289,94 @@ a:hover {
     background-position: center;
     background-repeat: no-repeat;
 }
+/* ============================================
+   PARTICLE ANIMATION FOR ALL HERO SECTIONS
+   ============================================ */
+
+.hero-particles {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-particles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 500px 500px;
+    animation: particles 25s infinite linear;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+/* Default particles (blue/teal - same as services) */
+.hero-particles::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(12, 184, 226, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(161, 240, 243, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(12, 184, 226, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 60% 30%, rgba(219, 199, 163, 0.08) 0%, transparent 50%);
+}
+
+/* HOME PAGE - Pink/Purple particles */
+.home-particles::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 105, 180, 0.15) 0%, transparent 50%), /* Pink */
+        radial-gradient(circle at 80% 20%, rgba(147, 112, 219, 0.12) 0%, transparent 50%), /* Purple */
+        radial-gradient(circle at 40% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%), /* Light Pink */
+        radial-gradient(circle at 60% 30%, rgba(221, 160, 221, 0.08) 0%, transparent 50%); /* Plum */
+}
+
+/* BLOG PAGE - Forest Green particles */
+.blog-particles::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(34, 139, 34, 0.15) 0%, transparent 50%), /* Forest Green */
+        radial-gradient(circle at 80% 20%, rgba(50, 205, 50, 0.12) 0%, transparent 50%), /* Lime Green */
+        radial-gradient(circle at 40% 80%, rgba(152, 251, 152, 0.1) 0%, transparent 50%), /* Pale Green */
+        radial-gradient(circle at 60% 30%, rgba(107, 142, 35, 0.08) 0%, transparent 50%); /* Olive Drab */
+}
+
+/* ABOUT PAGE - Light Blue/Cyan particles */
+.about-particles::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(135, 206, 250, 0.15) 0%, transparent 50%), /* Light Sky Blue */
+        radial-gradient(circle at 80% 20%, rgba(0, 191, 255, 0.12) 0%, transparent 50%), /* Deep Sky Blue */
+        radial-gradient(circle at 40% 80%, rgba(173, 216, 230, 0.1) 0%, transparent 50%), /* Light Blue */
+        radial-gradient(circle at 60% 30%, rgba(176, 224, 230, 0.08) 0%, transparent 50%); /* Powder Blue */
+}
+
+/* CONTACT PAGE - Gold/Amber particles */
+.contact-particles::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 50%), /* Gold */
+        radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.12) 0%, transparent 50%), /* Orange */
+        radial-gradient(circle at 40% 80%, rgba(218, 165, 32, 0.1) 0%, transparent 50%), /* Golden Rod */
+        radial-gradient(circle at 60% 30%, rgba(255, 223, 0, 0.08) 0%, transparent 50%); /* Yellow */
+}
+
+@keyframes particles {
+    0% { 
+        background-position: 
+            0px 0px, 
+            100px 100px, 
+            200px 200px, 
+            300px 300px;
+    }
+    100% { 
+        background-position: 
+            500px 500px, 
+            600px 400px, 
+            300px 600px, 
+            700px 300px;
+    }
+}
+
+/* Ensure content stays above particles */
+.hero-particles .container,
+.page-header.hero-particles .container {
+    position: relative;
+    z-index: 2;
+}
