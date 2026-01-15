@@ -213,38 +213,7 @@
         </div>
     </article>
 
-    <!-- Footer loads here -->
-
-    <!-- Blog Post Loader -->
-    <script>
-        // Simple loader for blog posts
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load navigation from root folder
-            fetch('../navigation.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.body.insertAdjacentHTML('afterbegin', data);
-                    // Set blog as active
-                    const navLinks = document.querySelectorAll('.nav-links a');
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.href.includes('blog.html')) {
-                            link.classList.add('active');
-                        }
-                    });
-                    // Mobile menu
-                    const mobileToggle = document.querySelector('.mobile-toggle');
-                    const navMenu = document.querySelector('.nav-links');
-                    if (mobileToggle && navMenu) {
-                        mobileToggle.addEventListener('click', function() {
-                            navMenu.classList.toggle('active');
-                            const icon = this.querySelector('i');
-                            icon.classList.toggle('fa-bars');
-                            icon.classList.toggle('fa-times');
-                        });
-                    }
-                });
-            
+    <!-- Footer loads here -->     
            
      <script src="../load-components.js"></script>
 </body>
