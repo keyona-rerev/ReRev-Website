@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - ReRev Labs</title>
+    <title>Contact Us - ReRev Labs</title>
 
     <!-- Favicon links go here -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -21,20 +21,20 @@
 <body>
 
     <!-- Hero -->
-    <section class="page-header hero-particles blog-particles">        
+    <section class="page-header hero-particles contact-particles">        
         <div class="container">
-            <h1>Blog & Insights</h1>
-            <p class="lead">Practical guides, frameworks, and insights on AI automation, startup operations, and scaling efficiently.</p>
+            <h1>Let's Work Together</h1>
+            <p class="lead">Ready to transform your startup's operations? Get in touch for a free consultation. We'll respond within 1 business day.</p>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
             <div class="contact-grid">
-                <!-- Google Form Embed - UPDATED WITH YOUR EXACT CODE -->
+                <!-- Contact Form - UPDATED WITH YOUR EXACT GOOGLE FORM -->
                 <div class="contact-form-container">
-                    <h2>Get the Journalist's Guide to AI in Story Production</h2>
-                    <p class="form-subtitle">Submit your email to receive our free guide</p>
+                    <h2>Schedule a Free Consult</h2>
+                    <p class="form-subtitle">Submit your information and we'll get back to you within 1 business day.</p>
                     
                     <!-- Your Exact Google Form Embed -->
                     <div class="google-form-wrapper">
@@ -55,59 +55,33 @@
                     </div>
                 </div>
 
-                <!-- Blog Content Section -->
+                <!-- Contact Info (UNCHANGED) -->
                 <div class="contact-info">
                     <div class="info-section">
-                        <h3><i class="fas fa-newspaper"></i> Featured Content</h3>
-                        <p>Explore our latest articles and resources:</p>
-                        
-                        <!-- Blog post cards will be loaded dynamically -->
-                        <div id="blog-list"></div>
-                        
-                        <script>
-                            // Load blog posts from JSON
-                            fetch('blog/blog-list.json')
-                                .then(response => response.json())
-                                .then(posts => {
-                                    const blogList = document.getElementById('blog-list');
-                                    posts.forEach(post => {
-                                        const postElement = document.createElement('div');
-                                        postElement.className = 'blog-preview';
-                                        postElement.innerHTML = `
-                                            <h4><a href="${post.url}">${post.title}</a></h4>
-                                            <p>${post.excerpt}</p>
-                                            <small>${post.date}</small>
-                                        `;
-                                        blogList.appendChild(postElement);
-                                    });
-                                })
-                                .catch(error => {
-                                    console.error('Error loading blog posts:', error);
-                                    document.getElementById('blog-list').innerHTML = 
-                                        '<p>Blog posts loading soon...</p>';
-                                });
-                        </script>
+                        <h3><i class="fas fa-envelope"></i> Direct Contact</h3>
+                        <p><strong>Email:</strong> keyona@rerev.io</p>
+                        <p><strong>Location:</strong> Birmingham, AL</p>
+                        <p><strong>Response Time:</strong> Within 1 business day</p>
                     </div>
                     
                     <div class="info-section">
-                        <h3><i class="fas fa-download"></i> Free Resources</h3>
-                        <p>Get instant access to our most popular guides:</p>
+                        <h3><i class="fas fa-list-check"></i> What to Expect</h3>
                         <ul>
-                            <li><strong>AI Implementation Checklist:</strong> Step-by-step guide</li>
-                            <li><strong>Startup Operations Audit:</strong> Self-assessment tool</li>
-                            <li><strong>Automation Roadmap Template:</strong> 90-day plan</li>
-                            <li><strong>Team Upskilling Guide:</strong> Training framework</li>
+                            <li><strong>Free Consultation:</strong> 30-minute strategy call</li>
+                            <li><strong>Custom Proposal:</strong> Tailored solution based on your challenges</li>
+                            <li><strong>Clear Timeline:</strong> Transparent process and delivery expectations</li>
+                            <li><strong>Ongoing Support:</strong> Implementation and optimization support</li>
                         </ul>
                     </div>
                     
                     <div class="info-section">
-                        <h3><i class="fas fa-bell"></i> Stay Updated</h3>
-                        <p>Subscribe to our newsletter for:</p>
+                        <h3><i class="fas fa-users"></i> Who We Work With</h3>
+                        <p>We specialize in early-stage startups ($1M-$20M revenue) that are:</p>
                         <ul>
-                            <li>Weekly AI automation tips</li>
-                            <li>Case studies from successful implementations</li>
-                            <li>Free templates and frameworks</li>
-                            <li>Exclusive webinar invitations</li>
+                            <li>Ready to scale operations intelligently</li>
+                            <li>Looking to validate product-market fit</li>
+                            <li>Need fractional leadership support</li>
+                            <li>Want to upskill their team in AI & automation</li>
                         </ul>
                     </div>
                 </div>
