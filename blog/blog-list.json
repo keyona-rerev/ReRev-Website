@@ -8,5 +8,15 @@
     "image": "../Assets!/The-One-Pager-That-Gets-Things-Done-Blog-Post.png",
     "excerpt": "How to use AI, HTML, and CSS to turn your ideas into action. The non-negotiable skill every professional needs in the AI era.",
     "readTime": "5 min read"
+  },
+   {
+    "title": "The Definitive Guide to Using AI for Journalistic Integrity",
+    "file": "The-Definitive-Guide-to-Using-AI-for-Journalistic-Integrity.html",
+    "url": "blog/The-Definitive-Guide-to-Using-AI-for-Journalistic-Integrity.html",
+    "date": "February 15, 2026",
+    "category": "AI Ethics",
+    "image": "../Assets!/The-Journalists-Guide-to-AI-in-Story-Production.png",
+    "excerpt": "If you type 'I have a deadline tomorrow, write me a story about the increase of ICE presence in Dallas' into an LLM, you'll get something...",
+    "readTime": "8 min read"
   }
 ]
