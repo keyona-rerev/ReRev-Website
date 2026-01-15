@@ -129,91 +129,144 @@ document.addEventListener('DOMContentLoaded', function() {
         loadRecentPosts(basePath);
     }
     
-   function loadRecentPosts(basePath) {
-    const blogListPath = basePath + 'blog/blog-list.json';
-    console.log("📂 Loading recent posts from:", blogListPath);
+async function loadRecentPosts(basePath) {
+    console.log("📚 Loading recent posts by reusing blog.html cards...");
     
-    fetch(blogListPath)
-        .then(response => {
-            console.log("📄 Blog list response:", response.status, response.statusText);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch: ${response.status}`);
+    try {
+        // 1. Load the actual blog page
+        const blogPageUrl = basePath + 'blog.html';
+        console.log("Fetching blog page:", blogPageUrl);
+        
+        const response = await fetch(blogPageUrl);
+        if (!response.ok) {
+            console.error("Failed to load blog.html:", response.status);
+            return;
+        }
+        
+        const html = await response.text();
+        console.log("Blog page loaded, size:", html.length, "chars");
+        
+        // 2. Extract blog cards using DOMParser
+        const parser = new DOMParser();
+        const blogPage = parser.parseFromString(html, 'text/html');
+        const allCards = blogPage.querySelectorAll('.blog-card');
+        
+        console.log("Found", allCards.length, "blog cards on blog.html");
+        
+        if (allCards.length === 0) {
+            console.warn("No .blog-card elements found in blog.html");
+            return;
+        }
+        
+        // 3. Get current post filename
+        const currentPath = window.location.pathname;
+        const currentFile = currentPath.split('/').pop();
+        console.log("Current post file:", currentFile);
+        
+        // 4. Filter cards (exclude current post, limit to 3)
+        const recentCards = [];
+        for (const card of allCards) {
+            if (recentCards.length >= 3) break;
+            
+            // Get the post link from this card
+            const cardLink = card.querySelector('.blog-card-title a, .blog-card-image a');
+            if (!cardLink) continue;
+            
+            const href = cardLink.getAttribute('href');
+            const cardFile = href.split('/').pop();
+            
+            // Skip if it's the current post or blog.html itself
+            if (cardFile === currentFile || cardFile === 'blog.html') {
+                console.log("Skipping card (current post or blog.html):", cardFile);
+                continue;
             }
-            return response.json();
-        })
-        .then(posts => {
-            console.log("✅ Blog list loaded, found", posts.length, "posts");
-            console.log("All posts:", posts);
             
-            const currentFile = window.location.pathname.split('/').pop();
-            console.log("📝 Current file:", currentFile);
+            console.log("Including card:", cardFile);
+            recentCards.push(card.outerHTML);
+        }
+        
+        console.log("Selected", recentCards.length, "recent cards");
+        
+        // 5. Create and insert the section
+        if (recentCards.length > 0) {
+            const sectionHTML = createRecentPostsSection(recentCards);
+            const article = document.querySelector('article');
             
-            const recentPosts = posts
-                .filter(post => {
-                    console.log(`Checking post: ${post.file} vs current: ${currentFile}`);
-                    return post.file !== currentFile && post.file !== 'blog.html';
-                })
-                .slice(0, 3);
-            
-            console.log("🎯 Filtered to", recentPosts.length, "recent posts:", recentPosts);
-            
-            if (recentPosts.length > 0) {
-                const html = createRecentPostsHTML(recentPosts, basePath);
-                const article = document.querySelector('article');
-                if (article) {
-                    article.insertAdjacentHTML('afterend', html);
-                    console.log("✅ Recent posts HTML inserted");
-                } else {
-                    console.log("❌ No <article> element found");
-                }
+            if (article) {
+                article.insertAdjacentHTML('afterend', sectionHTML);
+                console.log("✅ Recent posts section inserted");
+                
+                // Fix any relative paths in the inserted cards
+                fixPathsInRecentPosts(basePath);
             } else {
-                console.log("⚠️ No recent posts to show (filtered out all or empty list)");
+                console.error("No <article> element found to insert after");
             }
-        })
-        .catch(error => {
-            console.error("❌ Recent posts error:", error);
-            console.error("Full error:", error.message);
-        });
-}
-    
-    function createRecentPostsHTML(posts, basePath) {
-        return `
-        <section class="section bg-dark">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Recent Posts</h2>
-                    <p>More insights and strategies</p>
-                </div>
-                <div class="blog-grid">
-                    ${posts.map(post => `
-                    <div class="blog-card">
-                        <div class="blog-card-image">
-                            <a href="${basePath + post.url}">
-                                <img src="${basePath + post.image}" alt="${post.title}">
-                            </a>
-                            <div class="blog-card-category">${post.category}</div>
-                        </div>
-                        <div class="blog-card-content">
-                            <h3 class="blog-card-title">
-                                <a href="${basePath + post.url}">${post.title}</a>
-                            </h3>
-                            <p class="blog-card-excerpt">${post.excerpt}</p>
-                            <div class="blog-card-meta">
-                                <span class="blog-card-date">
-                                    <i class="far fa-calendar"></i> ${post.date}
-                                </span>
-                                <span class="blog-card-read-time">
-                                    <i class="far fa-clock"></i> ${post.readTime}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    `).join('')}
-                </div>
-            </div>
-        </section>
-        `;
+        } else {
+            console.log("No recent posts to show (all filtered out)");
+        }
+        
+    } catch (error) {
+        console.error("❌ Error loading recent posts:", error);
     }
+}
+
+function createRecentPostsSection(cardsHTML) {
+    return `
+    <section class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recent Posts</h2>
+                <p>More insights and strategies</p>
+            </div>
+            <div class="blog-grid">
+                ${cardsHTML.join('')}
+            </div>
+        </div>
+    </section>
+    `;
+}
+
+function fixPathsInRecentPosts(basePath) {
+    console.log("🔧 Fixing paths in recent posts...");
+    
+    // The recent posts section is the last .bg-dark section
+    const recentSection = document.querySelector('section.bg-dark:last-of-type');
+    if (!recentSection) return;
+    
+    // Fix all links in the recent posts
+    const links = recentSection.querySelectorAll('a[href]');
+    links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        // Skip external links
+        if (href.startsWith('http') || href.startsWith('#') || 
+            href.startsWith('mailto:') || href.startsWith('tel:')) {
+            return;
+        }
+        
+        // If it's a relative blog post link, make it root-based
+        if (href.startsWith('blog/')) {
+            const newHref = basePath + href;
+            link.setAttribute('href', newHref);
+            console.log("Fixed blog link:", href, "→", newHref);
+        }
+    });
+    
+    // Fix all image paths
+    const images = recentSection.querySelectorAll('img[src]');
+    images.forEach(img => {
+        const src = img.getAttribute('src');
+        if (!src) return;
+        
+        // If image path is relative (starts with Assets!/), add ../
+        if (src.startsWith('Assets!/') && !src.startsWith('../Assets!/')) {
+            const newSrc = '../' + src;
+            img.setAttribute('src', newSrc);
+            console.log("Fixed image path:", src, "→", newSrc);
+        }
+    });
+}
     
     function setActiveNavLink() {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
