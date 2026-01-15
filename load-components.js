@@ -1,7 +1,12 @@
-// load-components.js - Enhanced version for blog posts
+// load-components.js - FIXED PATHS FOR GITHUB PAGES
 document.addEventListener('DOMContentLoaded', function() {
-    // Load navigation
-    fetch('navigation.html')
+    // Get base path for GitHub Pages
+    const basePath = window.location.pathname.includes('/ReRev-Website/') 
+        ? '/ReRev-Website/' 
+        : '/';
+    
+    // Load navigation - FROM ROOT
+    fetch(basePath + 'navigation.html')
         .then(response => response.text())
         .then(data => {
             document.body.insertAdjacentHTML('afterbegin', data);
@@ -10,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.log('Navigation loaded fine'));
     
-    // Load footer
-    fetch('footer.html')
+    // Load footer - FROM ROOT  
+    fetch(basePath + 'footer.html')
         .then(response => response.text())
         .then(data => {
             document.body.insertAdjacentHTML('beforeend', data);
@@ -20,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check if we're on a blog post page
     if (isBlogPostPage()) {
-        loadBlogComponents();
+        loadBlogComponents(basePath);
     }
     
     // Function to check if current page is a blog post
@@ -30,21 +35,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Load blog-specific components
-    function loadBlogComponents() {
+    function loadBlogComponents(basePath) {
         // 1. Load CTA
         const ctaElement = document.querySelector('[data-blog-cta]');
         if (ctaElement) {
             const ctaType = ctaElement.getAttribute('data-blog-cta') || 'default';
-            loadCTA(ctaType, ctaElement);
+            loadCTA(ctaType, ctaElement, basePath);
         }
         
         // 2. Load recent posts (will insert after the article)
-        loadRecentPosts();
+        loadRecentPosts(basePath);
     }
     
     // Load CTA component
-    function loadCTA(ctaType, targetElement) {
-        const ctaPath = `components/ctas/${ctaType}.html`;
+    function loadCTA(ctaType, targetElement, basePath) {
+        const ctaPath = basePath + 'components/ctas/' + ctaType + '.html';
         
         fetch(ctaPath)
             .then(response => {
@@ -52,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // If specific CTA fails, try default
                     if (ctaType !== 'default') {
                         console.log(`CTA "${ctaType}" not found, trying default`);
-                        return loadCTA('default', targetElement);
+                        return loadCTA('default', targetElement, basePath);
                     }
                     throw new Error('CTA not found');
                 }
@@ -69,9 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Load recent blog posts (excluding current post)
-    function loadRecentPosts() {
-        // First, get list of blog posts
-        fetch('blog/blog-list.json')
+    function loadRecentPosts(basePath) {
+        const blogListPath = basePath + 'blog/blog-list.json';
+        
+        fetch(blogListPath)
             .then(response => response.json())
             .then(posts => {
                 const currentPage = window.location.pathname.split('/').pop();
@@ -84,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Create and insert recent posts section
                 if (recentPosts.length > 0) {
-                    const recentPostsHTML = createRecentPostsHTML(recentPosts);
+                    const recentPostsHTML = createRecentPostsHTML(recentPosts, basePath);
                     const article = document.querySelector('article');
                     if (article) {
                         article.insertAdjacentHTML('afterend', recentPostsHTML);
@@ -98,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Create HTML for recent posts
-    function createRecentPostsHTML(posts) {
+    function createRecentPostsHTML(posts, basePath) {
         return `
         <section class="section bg-dark">
             <div class="container">
@@ -110,14 +116,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     ${posts.map(post => `
                     <div class="blog-card">
                         <div class="blog-card-image">
-                            <a href="${post.url}">
-                                <img src="${post.image}" alt="${post.title}">
+                            <a href="${basePath + post.url}">
+                                <img src="${basePath + post.image.replace('../', '')}" alt="${post.title}">
                             </a>
                             <div class="blog-card-category">${post.category}</div>
                         </div>
                         <div class="blog-card-content">
                             <h3 class="blog-card-title">
-                                <a href="${post.url}">${post.title}</a>
+                                <a href="${basePath + post.url}">${post.title}</a>
                             </h3>
                             <p class="blog-card-excerpt">${post.excerpt}</p>
                             <div class="blog-card-meta">
@@ -146,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.remove('active');
             const linkPage = link.getAttribute('data-page');
             
-            if (currentPage === '' || currentPage === 'index.html') {
+            if (currentPage === '' || currentPage === 'index.html' || currentPage === 'ReRev-Website/') {
                 if (linkPage === 'index') {
                     link.classList.add('active');
                 }
