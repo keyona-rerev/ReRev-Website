@@ -616,7 +616,7 @@ a:hover {
 /* Footer */
 .footer {
     background-color: rgba(0, 0, 0, 0.3);
-    padding: var(--spacing-xl) 0 var(--spacing-md);
+    padding: var(--spacing-lg) 0 var(--spacing-sm);
     border-top: 1px solid rgba(191, 191, 191, 0.1);
 }
 
@@ -624,7 +624,7 @@ a:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
 }
 
 .footer-logo {
@@ -796,7 +796,7 @@ a:hover {
 .topics-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
     margin-bottom: var(--spacing-xl);
 }
 
@@ -1925,8 +1925,8 @@ a:hover {
 
 /* CTA Signatures */
 .cta-signature {
-    margin-top: var(--spacing-md) !important;
-    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-sm) !important;
+    padding-top: var(--spacing-sm);
     border-top: 1px solid rgba(191, 191, 191, 0.1);
     color: var(--gray) !important;
     font-size: 0.95rem;
