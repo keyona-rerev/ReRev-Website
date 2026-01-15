@@ -2217,3 +2217,42 @@ a:hover {
 .box-orange i { 
     color: #ff9800; 
 }
+
+/* Google Form Styling */
+.google-form-wrapper {
+    margin-top: 20px;
+}
+
+.google-form-wrapper iframe {
+    min-height: 600px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.google-form-wrapper iframe:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .google-form-wrapper iframe {
+        height: 700px; /* More height on mobile for easier form filling */
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+}
+
+/* Make sure the privacy note still looks good */
+.privacy-note {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #0cb8e2;
+}
