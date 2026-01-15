@@ -669,12 +669,31 @@ a:hover {
 
 .footer-bottom {
     text-align: center;
-    padding-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
     border-top: 1px solid rgba(191, 191, 191, 0.1);
     color: var(--gray);
     font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
 }
 
+.footer-bottom-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+    color: var(--bright-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--light-blue);
+}
 /* ============================================
    SERVICE PAGE SPECIFIC STYLES
    ============================================ */
