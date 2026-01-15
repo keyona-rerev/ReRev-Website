@@ -128,8 +128,8 @@ a:hover {
 }
 
 .cta-btn {
-    background-color: var(--bright-blue);
-    color: var(--black);
+    background-color: var(--white);
+    color: var(--dark-blue);
     padding: 10px 24px;
     border-radius: var(--border-radius);
     font-weight: 600;
