@@ -1787,3 +1787,214 @@ a:hover {
         padding-left: var(--spacing-lg);
     }
 }
+/* ============================================
+   CTA COMPONENT STYLES
+   ============================================ */
+
+/* Base CTA styles */
+.cta-workshop,
+.cta-email,
+.cta-book-time,
+.cta-default {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid rgba(12, 184, 226, 0.2);
+    background: rgba(12, 184, 226, 0.05);
+}
+
+/* Workshop CTA */
+.cta-workshop {
+    background: linear-gradient(135deg, rgba(12, 184, 226, 0.1), rgba(156, 39, 176, 0.1));
+    border-color: rgba(12, 184, 226, 0.3);
+}
+
+/* Email CTA */
+.cta-email {
+    background: rgba(12, 184, 226, 0.08);
+    border-color: rgba(12, 184, 226, 0.2);
+}
+
+/* Book Time CTA */
+.cta-book-time {
+    background: rgba(76, 175, 80, 0.08);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+/* Default CTA */
+.cta-default {
+    background: rgba(255, 193, 7, 0.08);
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+/* CTA Headers */
+.cta-workshop h2,
+.cta-email h2,
+.cta-book-time h2,
+.cta-default h2 {
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.8rem;
+}
+
+/* CTA Paragraphs */
+.cta-workshop p,
+.cta-email p,
+.cta-book-time p,
+.cta-default p {
+    color: var(--light-blue);
+    margin-bottom: var(--spacing-md);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CTA Buttons */
+.btn-workshop,
+.btn-email,
+.btn-book-time,
+.btn-default {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--bright-blue);
+    color: var(--dark-blue);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: calc(var(--border-radius) / 2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: var(--spacing-sm) 0;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-email {
+    background: var(--bright-blue);
+}
+
+.btn-book-time {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-default {
+    background: #FFC107;
+    color: var(--dark-blue);
+}
+
+.btn-workshop:hover,
+.btn-email:hover,
+.btn-book-time:hover,
+.btn-default:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-workshop:hover {
+    background: var(--light-blue);
+}
+
+.btn-email:hover {
+    background: var(--light-blue);
+}
+
+.btn-book-time:hover {
+    background: #45a049;
+}
+
+.btn-default:hover {
+    background: #ffb300;
+}
+
+/* CTA Notes */
+.cta-note {
+    font-size: 0.9rem;
+    color: var(--gray) !important;
+    margin-top: var(--spacing-sm) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+.cta-note i {
+    color: var(--bright-blue);
+}
+
+/* CTA Signatures */
+.cta-signature {
+    margin-top: var(--spacing-md) !important;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(191, 191, 191, 0.1);
+    color: var(--gray) !important;
+    font-size: 0.95rem;
+}
+
+.cta-signature a {
+    color: var(--bright-blue);
+    text-decoration: none;
+}
+
+.cta-signature a:hover {
+    color: var(--light-blue);
+    text-decoration: underline;
+}
+
+/* Author Bio Styles */
+.author-bio {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--bright-blue);
+}
+
+.author-header h3 {
+    color: var(--white);
+    margin-bottom: var(--spacing-xs);
+}
+
+.author-title {
+    color: var(--light-blue);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+}
+
+.author-content p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--gray);
+}
+
+.author-contact {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(191, 191, 191, 0.1);
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.author-contact p {
+    margin: 0;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.author-contact i {
+    color: var(--bright-blue);
+    width: 20px;
+}
+
+.author-contact a {
+    color: var(--bright-blue);
+    text-decoration: none;
+}
+
+.author-contact a:hover {
+    color: var(--light-blue);
+    text-decoration: underline;
+}
