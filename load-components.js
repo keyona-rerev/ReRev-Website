@@ -129,25 +129,52 @@ document.addEventListener('DOMContentLoaded', function() {
         loadRecentPosts(basePath);
     }
     
-    function loadRecentPosts(basePath) {
-        const blogListPath = basePath + 'blog/blog-list.json';
-        
-        fetch(blogListPath)
-            .then(response => response.json())
-            .then(posts => {
-                const currentFile = window.location.pathname.split('/').pop();
-                const recentPosts = posts
-                    .filter(post => post.file !== currentFile && post.file !== 'blog.html')
-                    .slice(0, 3);
-                
-                if (recentPosts.length > 0) {
-                    const html = createRecentPostsHTML(recentPosts, basePath);
-                    const article = document.querySelector('article');
-                    if (article) article.insertAdjacentHTML('afterend', html);
+   function loadRecentPosts(basePath) {
+    const blogListPath = basePath + 'blog/blog-list.json';
+    console.log("📂 Loading recent posts from:", blogListPath);
+    
+    fetch(blogListPath)
+        .then(response => {
+            console.log("📄 Blog list response:", response.status, response.statusText);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(posts => {
+            console.log("✅ Blog list loaded, found", posts.length, "posts");
+            console.log("All posts:", posts);
+            
+            const currentFile = window.location.pathname.split('/').pop();
+            console.log("📝 Current file:", currentFile);
+            
+            const recentPosts = posts
+                .filter(post => {
+                    console.log(`Checking post: ${post.file} vs current: ${currentFile}`);
+                    return post.file !== currentFile && post.file !== 'blog.html';
+                })
+                .slice(0, 3);
+            
+            console.log("🎯 Filtered to", recentPosts.length, "recent posts:", recentPosts);
+            
+            if (recentPosts.length > 0) {
+                const html = createRecentPostsHTML(recentPosts, basePath);
+                const article = document.querySelector('article');
+                if (article) {
+                    article.insertAdjacentHTML('afterend', html);
+                    console.log("✅ Recent posts HTML inserted");
+                } else {
+                    console.log("❌ No <article> element found");
                 }
-            })
-            .catch(error => console.log("Recent posts optional:", error));
-    }
+            } else {
+                console.log("⚠️ No recent posts to show (filtered out all or empty list)");
+            }
+        })
+        .catch(error => {
+            console.error("❌ Recent posts error:", error);
+            console.error("Full error:", error.message);
+        });
+}
     
     function createRecentPostsHTML(posts, basePath) {
         return `
