@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,139 +7,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%230cb8e2%22>🧪</text></svg>">
-    
-    <style>
-        /* Blog post specific styles */
-        body { background-color: #0a192f; color: #ffffff; }
-        .blog-post-content { color: #ffffff; }
-        .post-title { color: #ffffff; margin-bottom: 10px; }
-        .post-meta { color: #0cb8e2; margin-bottom: 20px; }
-        
-        /* Bullet points */
-        .content ul, .content ol {
-            padding-left: 30px;
-            margin-bottom: 25px;
-        }
-        .content li {
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        /* Insight boxes */
-        .insight-box {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin: 35px 0;
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 6px solid;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .insight-box p, .insight-box strong {
-            color: #1a1a1a !important; 
-            margin: 0 !important;
-            line-height: 1.5;
-        }
-
-        .insight-box i { font-size: 22px; margin-top: 3px; }
-
-        /* Box colors */
-        .box-blue { background-color: #e0f7fa; border-color: #0cb8e2; }
-        .box-blue i { color: #0cb8e2; }
-        .box-purple { background-color: #f3e5f5; border-color: #9c27b0; }
-        .box-purple i { color: #9c27b0; }
-        .box-pink { background-color: #fce4ec; border-color: #e91e63; }
-        .box-pink i { color: #e91e63; }
-        .box-green { background-color: #e8f5e9; border-color: #4caf50; }
-        .box-green i { color: #4caf50; }
-        .box-orange { background-color: #fff3e0; border-color: #ff9800; }
-        .box-orange i { color: #ff9800; }
-
-        /* Interactive embed */
-        .interactive-embed {
-            margin: 40px 0;
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            border: 1px solid rgba(12, 184, 226, 0.3);
-        }
-        
-        .interactive-embed img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-        }
-        
-        .interactive-note {
-            font-size: 0.9rem;
-            color: #0cb8e2;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
-        /* Note box */
-        .note-box {
-            background: rgba(12, 184, 226, 0.1);
-            border-left: 4px solid #0cb8e2;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
-        }
-
-        /* Mishap list */
-        .mishap-item {
-            background: rgba(255, 152, 0, 0.1);
-            border-left: 4px solid #ff9800;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-        }
-
-        .mishap-item h4 {
-            color: #ff9800;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        /* Quote styling */
-        blockquote {
-            border-left: 4px solid #0cb8e2;
-            padding-left: 20px;
-            margin: 30px 0;
-            font-style: italic;
-            color: #a1f0f3;
-        }
-
-        /* Section spacing */
-        h2 {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        h3 {
-            margin-top: 30px;
-            color: #a1f0f3;
-        }
-    </style>
 </head>
 <body>
-    <!-- Navigation loads automatically -->
+    <!-- Navigation loads automatically via load-components.js -->
 
     <article class="section">
         <div class="container">
             <div class="breadcrumb">
-                <a href="../blog.html" style="color: #0cb8e2;"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+                <a href="../blog.html"><i class="fas fa-arrow-left"></i> Back to Blog</a>
             </div>
             
             <div class="blog-post-content">
                 <h1 class="post-title">The Definitive Guide to Using AI for Journalistic Integrity</h1>
                 <div class="post-meta">
-                    <span>February 15, 2026</span> | <span>By Keyona Meeks</span> | <span>8 min read</span>
+                    <span><i class="far fa-calendar"></i> February 15, 2026</span> 
+                    <span><i class="fas fa-user"></i> By Keyona Meeks</span>
+                    <span><i class="far fa-clock"></i> 8 min read</span>
                 </div>
 
                 <div class="featured-image">
@@ -148,7 +30,7 @@
                 </div>
 
                 <div class="content">
-                    <p class="lead" style="font-size: 1.2em; color: #0cb8e2;">If you type "I have a deadline tomorrow, write me a story about the increase of ICE presence in Dallas" into an LLM, you'll get something. It will technically be a news story. It will probably be mediocre, poorly considered, and not very informative for your audience. It'll do what you asked—just not well.</p>
+                    <p class="lead">If you type "I have a deadline tomorrow, write me a story about the increase of ICE presence in Dallas" into an LLM, you'll get something. It will technically be a news story. It will probably be mediocre, poorly considered, and not very informative for your audience. It'll do what you asked—just not well.</p>
                     
                     <p>This is not how I'm encouraging you to use AI.</p>
 
@@ -272,84 +154,25 @@
                         <p>This isn't just about keeping up. It's about gaining an advantage. Better analysis. Better stories. Better self-awareness of the subjective choices you're making every single day.</p>
                     </div>
                     
-                    <p style="font-size: 1.1em; text-align: center; margin: 40px 0 30px; color: #0cb8e2;">
+                    <p class="final-note">
                         <strong>You're the journalist. The AI is just helping you be better at it.</strong>
                     </p>
 
-                    <div class="insight-box box-green" style="margin: 50px 0; text-align: center;">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                        <div>
-                            <p><strong>Want me to teach this to your team?</strong><br>
-                            Bring this AI workflow training to your newsroom or organization. Custom workshops for journalists and content teams.</p>
-                            <a href="../services.html" class="btn-service" style="display: inline-block; margin-top: 15px;">
-                                <i class="fas fa-calendar-alt"></i> Explore Team Training
-                            </a>
-                        </div>
-                    </div>
+                    <!-- CTA loaded dynamically -->
+                    <div data-blog-cta="workshop"></div>
 
-                    <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                        <p style="color: #a1f0f3; font-size: 0.9rem;">
-                            <strong>Explore the interactive tool above</strong> to see the complete workflow, principles, and AI skills reference. The "AI Mishaps" tab will help you avoid common pitfalls, and the "Overview" tab gives you a one-page view of where AI fits into your process.
-                        </p>
+                    <div class="explore-note">
+                        <p><strong>Explore the interactive tool above</strong> to see the complete workflow, principles, and AI skills reference. The "AI Mishaps" tab will help you avoid common pitfalls, and the "Overview" tab gives you a one-page view of where AI fits into your process.</p>
                     </div>
                 </div>
             </div>
         </div>
     </article>
 
-    <!-- Footer loads automatically -->
+    <!-- Recent posts section loads automatically for blog posts -->
+    <!-- Footer loads automatically via load-components.js -->
 
-    <!-- Blog Post Loader Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load navigation
-            fetch('../navigation.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.body.insertAdjacentHTML('afterbegin', data);
-                    const navLinks = document.querySelectorAll('.nav-links a');
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.href.includes('blog.html')) {
-                            link.classList.add('active');
-                        }
-                    });
-                    // Mobile menu
-                    const mobileToggle = document.querySelector('.mobile-toggle');
-                    const navMenu = document.querySelector('.nav-links');
-                    if (mobileToggle && navMenu) {
-                        mobileToggle.addEventListener('click', function() {
-                            navMenu.classList.toggle('active');
-                            const icon = this.querySelector('i');
-                            icon.classList.toggle('fa-bars');
-                            icon.classList.toggle('fa-times');
-                        });
-                    }
-                });
-            
-            // Load footer with current year
-            fetch('../footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    // Update year to 2026 before inserting
-                    const updatedData = data.replace('2023', '2026');
-                    document.body.insertAdjacentHTML('beforeend', updatedData);
-                    
-                    // Add team training CTA to footer
-                    const footer = document.querySelector('.footer');
-                    if (footer) {
-                        const trainingCTA = `
-                            <div style="text-align: center; padding: 20px; background: rgba(12, 184, 226, 0.1); margin-top: 20px; border-radius: 8px;">
-                                <p style="color: #0cb8e2; margin-bottom: 10px;"><strong>Bring AI training to your team</strong></p>
-                                <a href="../services.html" style="display: inline-block; background: #0cb8e2; color: #051b2f; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold;">
-                                    <i class="fas fa-users"></i> Team Workshops
-                                </a>
-                            </div>
-                        `;
-                        footer.insertAdjacentHTML('beforeend', trainingCTA);
-                    }
-                });
-        });
-    </script>
+    <!-- Single loader for everything -->
+    <script src="../load-components.js"></script>
 </body>
 </html>
