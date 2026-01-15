@@ -129,7 +129,7 @@ a:hover {
 
 .cta-btn {
     background-color: var(--bright-blue);
-    color: var(--white);
+    color: var(--black);
     padding: 10px 24px;
     border-radius: var(--border-radius);
     font-weight: 600;
@@ -137,7 +137,7 @@ a:hover {
 }
 
 .cta-btn:hover {
-    background-color: var(--light-blue);
+    background-color: var(--white);
     color: var(--dark-blue);
     transform: translateY(-2px);
 }
