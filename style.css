@@ -613,27 +613,31 @@ a:hover {
     left: 0;
 }
 
-/* Footer */
+/* ============================================
+   FOOTER - SIMPLIFIED
+   ============================================ */
 .footer {
     background-color: rgba(0, 0, 0, 0.3);
-    padding: var(--spacing-lg) 0 var(--spacing-sm);
+    padding: var(--spacing-md) 0 var(--spacing-xs);
     border-top: 1px solid rgba(191, 191, 191, 0.1);
+    font-size: 0.85rem; /* Reduced font size */
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-md);
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .footer-logo {
-    font-size: 1.5rem;
+    font-size: 1.25rem; /* Smaller logo */
     font-weight: 700;
     color: var(--white);
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
 }
 
 .footer-logo i {
@@ -642,25 +646,37 @@ a:hover {
 
 .footer-info p {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--spacing-xs);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 8px; /* Smaller margin */
+    font-size: 0.85rem;
+    line-height: 1.4;
 }
 
 .footer-info i {
     color: var(--bright-blue);
-    width: 20px;
+    width: 16px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-top: 2px;
 }
 
 .footer-nav {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: 6px; /* Reduced gap */
+}
+
+.footer-nav h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--white);
 }
 
 .footer-nav a {
     color: var(--gray);
     transition: color 0.3s ease;
+    font-size: 0.85rem;
 }
 
 .footer-nav a:hover {
@@ -672,10 +688,7 @@ a:hover {
     padding-top: var(--spacing-sm);
     border-top: 1px solid rgba(191, 191, 191, 0.1);
     color: var(--gray);
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
+    font-size: 0.8rem;
 }
 
 .footer-bottom-links {
@@ -683,19 +696,24 @@ a:hover {
     justify-content: center;
     gap: var(--spacing-md);
     flex-wrap: wrap;
+    margin-bottom: 6px;
 }
 
 .footer-bottom-links a {
     color: var(--bright-blue);
     text-decoration: none;
     transition: color 0.3s ease;
+    font-size: 0.8rem;
 }
 
 .footer-bottom-links a:hover {
     color: var(--light-blue);
 }
+
 .footer-legal {
-    margin-top: var(--spacing-xs);
+    margin-top: 4px;
+    font-size: 0.75rem;
+    opacity: 0.8;
 }
 
 .footer-legal a {
@@ -706,6 +724,35 @@ a:hover {
 
 .footer-legal a:hover {
     color: var(--light-blue);
+}
+
+/* Even more compact footer for mobile */
+@media (max-width: 768px) {
+    .footer {
+        padding: var(--spacing-sm) 0 var(--spacing-xs);
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+    }
+    
+    .footer-info p {
+        justify-content: center;
+    }
+    
+    .footer-nav {
+        text-align: center;
+    }
+    
+    .footer-bottom-links {
+        gap: var(--spacing-sm);
+    }
 }
 /* ============================================
    SERVICE PAGE SPECIFIC STYLES
