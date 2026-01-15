@@ -11,12 +11,12 @@
   },
    {
     "title": "The Definitive Guide to Using AI for Journalistic Integrity",
-    "file": "The-Definitive-Guide-to-Using-AI-for-Journalistic-Integrity.html",
+    "file": "The-Definitive-Guide-to-Using-AI-for-Journalistic-Integrity.html",  // ← DASHES, not spaces!
     "url": "blog/The-Definitive-Guide-to-Using-AI-for-Journalistic-Integrity.html",
-    "date": "February 15, 2026",
+    "date": "January 15, 2026",
     "category": "AI Ethics",
-    "image": "../Assets!/The-Journalists-Guide-to-AI-in-Story-Production.png",
-    "excerpt": "If you type 'I have a deadline tomorrow, write me a story about the increase of ICE presence in Dallas' into an LLM, you'll get something...",
+    "image": "Assets!/The-Journalists-Guide-to-AI-in-Story-Production.png",
+    "excerpt": "If you type 'I have a deadline tomorrow...",
     "readTime": "8 min read"
-  }
+}
 ]
